@@ -1209,7 +1209,7 @@
             </div>
         </div>
 
-        <!-- Completion Certificate -->
+<!-- Completion Certificate -->
         <div id="completion" class="content-area">
             <div style="text-align: center; padding: 40px;">
                 <h1 style="color: #28a745; font-size: 3rem;">🎉 Well Done!</h1>
@@ -1219,7 +1219,7 @@
                 <div style="background: linear-gradient(135deg, #fff3cd, #ffeaa7); border-radius: 15px; padding: 30px; margin: 30px 0; border: 3px solid #ffd700;">
                     <h3 style="color: #333;">📚 Training Modules Completed</h3>
                     <p style="font-size: 1.2rem; margin: 20px 0;">You have successfully completed all training modules covering:</p>
-                    <ul style="text-align: left; display: inline-block; font-size: 1.1rem;">
+                    <ul style="text-align: left; display: inline-block; font-size: 1.1rem; line-height: 1.6;">
                         <li>Factory Rules & Safety Protocols</li>
                         <li>PPE & Protective Equipment</li>
                         <li>Hygiene & Food Safety</li>
@@ -1230,23 +1230,43 @@
                 </div>
                 
                 <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 15px; padding: 25px; margin: 30px 0; border: 3px solid #2196f3;">
-                    <h3 style="color: #333;">📝 Next Step: Final Assessment</h3>
+                    <h3 style="color: #333;">📝 Final Assessment Required</h3>
+                    <p style="font-size: 1.2rem; color: #333; margin: 15px 0; font-weight: bold;">
+                        To complete your induction, you must now take the final assessment.
+                    </p>
                     <p style="font-size: 1.1rem; color: #666; margin: 15px 0;">
-                        To complete your induction, please take the final assessment using the Microsoft Form below.
+                        The assessment is done through a Microsoft Form and tests your knowledge of all the topics you've just learned.
                     </p>
-                    <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">
-                        Once you pass the assessment, you'll receive your official Hilltop Honey certification!
+                    <p style="font-size: 1rem; color: #666; margin: 15px 0;">
+                        You need to pass this assessment to receive your official Hilltop Honey certification and begin working.
                     </p>
-                    <button onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=kwUl-gL0HEmwt61NYzBnUmEnHjTZ8XFAti5gOD7EzBVUMk9ZNERUQkZLU0hRMkdBVlNURkJGNkJKUC4u', '_blank')" class="btn btn-success" style="margin: 10px;">
-                        🚀 Take Final Assessment
+                    
+                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 20px 0; border-left: 4px solid #f4a261;">
+                        <p style="font-size: 1rem; color: #333; margin: 10px 0;">
+                            <strong>Ready to take your assessment?</strong><br>
+                            Click the button below to open the Microsoft Form:
+                        </p>
+                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=kwUl-gL0HEmwt61NYzBnUmEnHjTZ8XFAti5gOD7EzBVUMk9ZNERUQkZLU0hRMkdBVlNURkJGNkJKUC4u" 
+                           target="_blank" 
+                           style="display: inline-block; background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin: 15px 10px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); transition: transform 0.2s ease;">
+                            🚀 Take Final Assessment
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 15px; padding: 20px; margin: 20px 0; border: 2px solid #ff9800;">
+                    <h4 style="color: #333; margin-bottom: 15px;">Need to Review Before Your Assessment?</h4>
+                    <p style="font-size: 1rem; color: #666; margin-bottom: 15px;">
+                        Take your time! You can review any of the training modules before taking your assessment.
+                    </p>
+                    <button class="btn btn-primary" onclick="showModuleOverview()" style="background: linear-gradient(135deg, #f4a261, #e76f51); border: none; padding: 12px 25px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                        📚 Review Modules
                     </button>
                 </div>
                 
                 <p style="font-size: 1.2rem; color: #666; margin-top: 30px;">Welcome to the Hilltop Honey team! 🍯</p>
-                <button class="btn btn-primary" onclick="showModuleOverview()">📚 Review Modules</button>
             </div>
         </div>
-    </div>
 
     <script>
         // Training state management
@@ -1301,12 +1321,7 @@
             const progress = (completedModules.length / 6) * 100;
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${progress}%`;
-            
-            if (progress === 100) {
-                progressBar.textContent = `Training Complete!`;
-            } else {
-                progressBar.textContent = `${Math.round(progress)}% Complete`;
-            }
+            progressBar.textContent = `${Math.round(progress)}% Complete`;
         }
 
         // Update module cards
@@ -1338,7 +1353,6 @@
             const contentAreas = document.querySelectorAll('.content-area');
             contentAreas.forEach(area => {
                 area.classList.remove('active');
-                area.style.display = 'none';
             });
             document.getElementById('moduleOverview').style.display = 'none';
         }
@@ -1382,13 +1396,125 @@
             }, 3000);
         }
 
-        // Show completion page
+        // Final Quiz
+        const finalQuizQuestions = [
+            {
+                question: "Where is smoking permitted in the factory?",
+                options: ["Anywhere outside", "In offices", "Designated smoking area only", "Production areas"],
+                correct: 2
+            },
+            {
+                question: "What should you do if PPE touches the floor?",
+                options: ["Clean and reuse", "Continue using", "Discard and replace immediately", "Put in locker"],
+                correct: 2
+            },
+            {
+                question: "What type of plasters must be used for cuts?",
+                options: ["Any waterproof", "Personal plasters", "Blue metal detectable company plasters", "Clear plastic"],
+                correct: 2
+            },
+            {
+                question: "What should you do with unidentified visitors?",
+                options: ["Challenge and alert management", "Call police immediately", "Ignore them", "Ask colleague to handle"],
+                correct: 0
+            },
+            {
+                question: "How long is CCTV footage retained?",
+                options: ["7 days", "Maximum 30 days unless required for investigation", "90 days", "Permanently"],
+                correct: 1
+            },
+            {
+                question: "Why is environmental awareness important?",
+                options: ["Regulations only", "Customer trust only", "Employee wellbeing only", "All: wellbeing, trust, community, business"],
+                correct: 3
+            },
+            {
+                question: "Who must you report health conditions to?",
+                options: ["Only HR", "Only your manager", "Manager/team leader/HR", "No one"],
+                correct: 2
+            },
+            {
+                question: "What happens if you don't report required health conditions?",
+                options: ["Nothing", "Verbal warning only", "Disciplinary action including possible termination", "Just a note in file"],
+                correct: 2
+            },
+            {
+                question: "What happens if you don't report required health conditions?",
+                options: ["Nothing", "Verbal warning only", "Disciplinary action including possible termination", "Just a note in file"],
+                correct: 2
+            }
+        ];
+
+        let finalQuizAnswers = {};
+        let finalQuizScore = 0;
+
+        function startFinalQuiz() {
+            hideAllContent();
+            document.getElementById('finalQuiz').classList.add('active');
+            generateFinalQuiz();
+        }
+
+        function generateFinalQuiz() {
+            const container = document.getElementById('quizQuestions');
+            container.innerHTML = '';
+            
+            finalQuizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question';
+                questionDiv.innerHTML = `
+                    <h4>Question ${index + 1}: ${q.question}</h4>
+                    <div class="quiz-options">
+                        ${q.options.map((option, optIndex) => `
+                            <div class="quiz-option" onclick="selectFinalQuizOption(${index}, ${optIndex}, this)">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+            
+            document.getElementById('submitQuiz').style.display = 'inline-block';
+        }
+
+        function selectFinalQuizOption(questionIndex, optionIndex, element) {
+            const options = element.parentNode.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            finalQuizAnswers[questionIndex] = optionIndex;
+        }
+
+        function submitFinalQuiz() {
+            if (Object.keys(finalQuizAnswers).length !== finalQuizQuestions.length) {
+                alert('Please answer all questions before submitting!');
+                return;
+            }
+            
+            finalQuizScore = 0;
+            finalQuizQuestions.forEach((q, index) => {
+                if (finalQuizAnswers[index] === q.correct) {
+                    finalQuizScore++;
+                }
+            });
+            
+            const percentage = (finalQuizScore / finalQuizQuestions.length) * 100;
+            
+            if (percentage >= 80) {
+                showCompletion();
+            } else {
+                alert(`You scored ${Math.round(percentage)}%. You need 80% to pass. Please review the modules and try again.`);
+                showModuleOverview();
+            }
+        }
+
         function showCompletion() {
             hideAllContent();
-            const completionSection = document.getElementById('completion');
-            completionSection.classList.add('active');
-            completionSection.style.display = 'block';
+            document.getElementById('completion').classList.add('active');
             updateProgress();
+        }
+
+        function downloadCertificate() {
+            alert('Certificate download functionality would be implemented here!');
         }
 
         // Initialize when page loads
