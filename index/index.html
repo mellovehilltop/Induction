@@ -105,6 +105,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border-left: 5px solid #6c757d; /* Default locked state */
         }
 
         .module-card:hover {
@@ -279,13 +280,15 @@
         }
 
         .quiz-option.correct {
-            border-color: #28a745;
-            background: #d4edda;
+            border-color: #28a745 !important;
+            background: #d4edda !important;
+            font-weight: bold;
         }
 
         .quiz-option.incorrect {
-            border-color: #dc3545;
-            background: #f8d7da;
+            border-color: #dc3545 !important;
+            background: #f8d7da !important;
+            font-weight: bold;
         }
 
         .btn {
@@ -329,26 +332,25 @@
         .image-placeholder {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-color: #e9ecef;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
             margin: 15px 0;
         }
 
         .step-list {
             counter-reset: step-counter;
             list-style: none;
-            padding: 0;
+            padding-left: 20px;
+            margin-top: 15px;
         }
 
         .step-list li {
             counter-increment: step-counter;
             margin-bottom: 15px;
-            padding: 15px;
+            padding: 15px 15px 15px 30px;
             background: white;
             border-radius: 8px;
             border-left: 4px solid #f4a261;
@@ -358,37 +360,55 @@
         .step-list li::before {
             content: counter(step-counter);
             position: absolute;
-            left: -15px;
-            top: 15px;
+            left: -18px;
+            top: 50%;
+            transform: translateY(-50%);
             background: #f4a261;
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .icons {
             display: flex;
             gap: 15px;
             margin: 15px 0;
+            flex-wrap: wrap;
         }
 
         .icon-item {
             text-align: center;
             flex: 1;
+            min-width: 150px;
             padding: 15px;
             background: white;
             border-radius: 10px;
             border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-color: #f4a261;
         }
 
         .icon-item .icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
+            color: #f4a261;
+        }
+        
+        .icon-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
         }
 
         @media (max-width: 768px) {
@@ -425,8 +445,8 @@
 
         <!-- Module Overview -->
         <div id="moduleOverview" class="module-grid">
-            <div class="module-card current" onclick="startModule(1)">
-                <div class="status-badge current-badge">CURRENT</div>
+            <div class="module-card" onclick="startModule(1)">
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e76f51);">⚖️</div>
                 <h3>Factory Rules & Safety</h3>
                 <p>Learn about our essential rules, legal requirements, and safety protocols to keep everyone safe.</p>
@@ -434,7 +454,7 @@
             </div>
 
             <div class="module-card" onclick="startModule(2)">
-                <div class="status-badge locked-badge">LOCKED</div>
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #f4a261);">🦺</div>
                 <h3>PPE & Protective Equipment</h3>
                 <p>Master the correct use of personal protective equipment and understand why it's crucial.</p>
@@ -442,7 +462,7 @@
             </div>
 
             <div class="module-card" onclick="startModule(3)">
-                <div class="status-badge locked-badge">LOCKED</div>
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">🧼</div>
                 <h3>Hygiene & Food Safety</h3>
                 <p>Essential hygiene practices and food safety protocols to protect our products and customers.</p>
@@ -450,7 +470,7 @@
             </div>
 
             <div class="module-card" onclick="startModule(4)">
-                <div class="status-badge locked-badge">LOCKED</div>
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #e76f51, #f4a261);">🔒</div>
                 <h3>Security & Site Access</h3>
                 <p>Understand our security measures, CCTV policies, and how to maintain a secure workplace.</p>
@@ -458,7 +478,7 @@
             </div>
 
             <div class="module-card" onclick="startModule(5)">
-                <div class="status-badge locked-badge">LOCKED</div>
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #e76f51);">🌱</div>
                 <h3>Environmental Responsibility</h3>
                 <p>Learn how we protect the environment and your role in our sustainability efforts.</p>
@@ -466,7 +486,7 @@
             </div>
 
             <div class="module-card" onclick="startModule(6)">
-                <div class="status-badge locked-badge">LOCKED</div>
+                <div class="status-badge"></div>
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">📋</div>
                 <h3>Health Reporting & Legal</h3>
                 <p>Important health reporting requirements and legal obligations for food handlers.</p>
@@ -482,47 +502,20 @@
             </div>
 
             <div class="lesson-section">
-                <h3>🎯 Learning Goals</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">⚖️</div>
-                        <div>Legal Compliance</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🔒</div>
-                        <div>Security Measures</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📋</div>
-                        <div>Site Rules</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
                 <h3>🚫 Legal & Security Compliance</h3>
-                <div class="image-placeholder">🏛️ Legal & Security Overview</div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Cg fill=\'%23e76f51\'%3E%3Cpath d=\'M200 40 L220 50 L200 60 L180 50 Z\'/%3E%3Cpath d=\'M200 40 L120 80 L120 160 L200 200 L280 160 L280 80 Z M200 185 L135 152 V 88 L200 55 L265 88 V 152 Z\'/%3E%3Ctext x=\'200\' y=\'125\' font-family=\'Arial\' font-size=\'40\' text-anchor=\'middle\' font-weight=\'bold\'%3E⚖️%3C/text%3E%3C/g%3E%3C/svg%3E');"></div>
                 <div class="highlight-box important">
                     <strong>🚨 Critical Rule:</strong> Never knowingly break the law or allow others to do so on company property.
                 </div>
-
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🚪</div>
-                        <div><strong>Secure the Site</strong><br>Keep doors and gates closed to prevent unauthorised access and pests</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👁️</div>
-                        <div><strong>Challenge Strangers</strong><br>Question unknown persons and report concerns immediately</div>
-                    </div>
+                    <div class="icon-item"><div class="icon">🚪</div><strong>Secure the Site</strong><br>Keep doors and gates closed to prevent unauthorised access and pests</div>
+                    <div class="icon-item"><div class="icon">👁️</div><strong>Challenge Strangers</strong><br>Question unknown persons and report concerns immediately</div>
                 </div>
             </div>
 
             <div class="lesson-section">
                 <h3>🚭 Smoking & Vaping Policy</h3>
-                <div class="image-placeholder">🚭 Designated Smoking Area</div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Cg fill=\'%23333\'%3E%3Crect x=\'120\' y=\'80\' width=\'160\' height=\'40\' rx=\'10\'/%3E%3Crect x=\'130\' y=\'90\' width=\'20\' height=\'20\' rx=\'5\' fill=\'white\'/%3E%3Crect x=\'160\' y=\'90\' width=\'20\' height=\'20\' rx=\'5\' fill=\'white\'/%3E%3Crect x=\'190\' y=\'90\' width=\'20\' height=\'20\' rx=\'5\' fill=\'white\'/%3E%3Cpath d=\'M150 70 C 155 60, 165 55, 175 60 C 180 62, 185 70, 180 75\' stroke=\'%23aaa\' stroke-width=\'5\' fill=\'none\'/%3E%3Cpath d=\'M190 70 C 195 60, 205 55, 215 60 C 220 62, 225 70, 220 75\' stroke=\'%23aaa\' stroke-width=\'5\' fill=\'none\'/%3E%3C/g%3E%3Ccircle cx=\'200\' cy=\'100\' r=\'70\' fill=\'none\' stroke=\'red\' stroke-width=\'10\'/%3E%3Cpath d=\'M150 150 L250 50\' stroke=\'red\' stroke-width=\'10\'/%3E%3C/svg%3E');"></div>
                 <ul class="step-list">
                     <li><strong>Designated Area Only:</strong> Smoking and vaping are only permitted in the designated smoking area</li>
                     <li><strong>No Indoor Smoking:</strong> Smoking and vaping inside the building are strictly prohibited</li>
@@ -535,85 +528,30 @@
                 <div class="highlight-box">
                     <strong>Where can you eat?</strong> Only in the canteen, rest areas, and offices.
                 </div>
-                
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">💧</div>
-                        <div><strong>Water</strong><br>Can be consumed by the fountains</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🏭</div>
-                        <div><strong>Production Areas</strong><br>No food or drink (except water in designated areas)</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🚫</div>
-                        <div><strong>Alcohol</strong><br>Strictly forbidden on company premises</div>
-                    </div>
+                    <div class="icon-item"><div class="icon">💧</div><strong>Water</strong><br>Can be consumed by the fountains</div>
+                    <div class="icon-item"><div class="icon">🏭</div><strong>Production Areas</strong><br>No food or drink (except water in designated areas)</div>
+                    <div class="icon-item"><div class="icon">🚫</div><strong>Alcohol</strong><br>Strictly forbidden on company premises</div>
                 </div>
             </div>
 
             <div class="lesson-section">
                 <h3>🥪 Food Storage & Personal Belongings</h3>
-                <div style="width: 100%; height: 200px; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23f4a261%22/><text x=%22200%22 y=%22100%22 text-anchor=%22middle%22 dy=%22.35em%22 font-family=%22Arial, sans-serif%22 font-size=%2216%22 fill=%22white%22>🗄️ Locker Room & Storage Area</text></svg>') center/cover; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; margin: 15px 0;"></div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Crect x=\'100\' y=\'50\' width=\'200\' height=\'100\' rx=\'10\' fill=\'%23bdc3c7\'/%3E%3Crect x=\'105\' y=\'55\' width=\'90\' height=\'90\' fill=\'%23ecf0f1\'/%3E%3Crect x=\'205\' y=\'55\' width=\'90\' height=\'90\' fill=\'%23ecf0f1\'/%3E%3Ccircle cx=\'185\' cy=\'100\' r=\'5\' fill=\'%237f8c8d\'/%3E%3Crect x=\'183\' y=\'105\' width=\'4\' height=\'10\' fill=\'%237f8c8d\'/%3E%3Ccircle cx=\'285\' cy=\'100\' r=\'5\' fill=\'%237f8c8d\'/%3E%3Crect x=\'283\' y=\'105\' width=\'4\' height=\'10\' fill=\'%237f8c8d\'/%3E%3C/svg%3E');"></div>
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🍎</div>
-                        <div><strong>Food Care</strong><br>Take care of your own food</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🚫</div>
-                        <div><strong>No Lockers</strong><br>Don't store food in your lockers</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📦</div>
-                        <div><strong>Sealed Containers</strong><br>Use sealed containers for storage in provided fridges</div>
-                    </div>
+                    <div class="icon-item"><div class="icon">🍎</div><strong>Food Care</strong><br>Take care of your own food</div>
+                    <div class="icon-item"><div class="icon">🚫</div><strong>No Lockers</strong><br>Don't store food in your lockers</div>
+                    <div class="icon-item"><div class="icon">📦</div><strong>Sealed Containers</strong><br>Use sealed containers for storage in provided fridges</div>
                 </div>
-
                 <div class="highlight-box important">
                     <strong>🚨 Remember:</strong> Personal belongings go in your locker, only coats should be on the hook.
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>📱 Equipment & Personal Responsibility</h3>
-                <div style="width: 100%; height: 200px; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23e76f51%22/><text x=%22200%22 y=%22100%22 text-anchor=%22middle%22 dy=%22.35em%22 font-family=%22Arial, sans-serif%22 font-size=%2216%22 fill=%22white%22>📱 Personal Equipment Storage</text></svg>') center/cover; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; margin: 15px 0;"></div>
-                
-                <ul class="step-list">
-                    <li><strong>Authorization Required:</strong> Company equipment (fax, phone, computer) requires permission from management</li>
-                    <li><strong>Restricted Devices:</strong> No photographic or recording equipment in production areas</li>
-                    <li><strong>Electrical Equipment:</strong> Keep secured in a locker when not in use</li>
-                    <li><strong>Personal Responsibility:</strong> You are solely responsible for your possessions on site</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>📵 Important:</strong> Personal electrical devices should be left at home whenever possible. If you must bring them, secure them in your locker.
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>🔍 Searches & Cleanliness</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🔍</div>
-                        <div><strong>Search Policy</strong><br>Management may request searches with same-sex witness</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🧹</div>
-                        <div><strong>Clean As You Go</strong><br>Always maintain a clean and tidy workspace</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🤝</div>
-                        <div><strong>Shared Facilities</strong><br>Clean up after yourself in shared spaces</div>
-                    </div>
                 </div>
             </div>
 
             <!-- Quick Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz1">
                     <h4>Where is smoking permitted in the factory?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, false)">Anywhere outside the building</div>
@@ -622,7 +560,7 @@
                         <div class="quiz-option" onclick="selectOption(this, false)">Inside production areas</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz1')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -633,40 +571,13 @@
 
         <!-- Module 2: PPE & Protective Equipment -->
         <div id="module2" class="content-area">
-            <div class="content-header">
+             <div class="content-header">
                 <h2>🦺 Module 2: PPE & Protective Equipment</h2>
                 <p>Personal Protective Equipment is your shield! Learn how to use it properly to protect yourself and our products.</p>
             </div>
-
-            <div class="lesson-section">
-                <h3>🎯 Why PPE Matters</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🛡️</div>
-                        <div><strong>Product Safety</strong><br>Protects our honey from contamination</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👤</div>
-                        <div><strong>Personal Safety</strong><br>Safeguards your health and wellbeing</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>📝 The Golden Rules</h3>
-                <div class="highlight-box important">
-                    <strong>🚨 Critical:</strong> All PPE (except boots) must be kept off the floor. If it touches the floor, discard and replace immediately!
-                </div>
-                
-                <div class="highlight-box">
-                    <strong>📦 Storage:</strong> Personal lockers are for personal items only. PPE is company-issued and must NOT be taken home.
-                </div>
-            </div>
-
             <div class="lesson-section">
                 <h3>👔 The Right Order - PPE Steps</h3>
-                <div class="image-placeholder">👔 PPE Dressing Sequence</div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Cg transform=\'translate(200 110) scale(1.5)\'%3E%3Ccircle cx=\'0\' cy=\'-40\' r=\'15\' fill=\'%23f39c12\'/%3E%3Cpath d=\'M -30 0 C -30 30, 30 30, 30 0 Z\' fill=\'%23ecf0f1\'/%3E%3Cpath d=\'M -25 -15 L -25 50 L 25 50 L 25 -15 L 10 -5 L 0 -15 L -10 -5 Z\' fill=\'%233498db\'/%3E%3Crect x=\'-5\' y=\'0\' width=\'10\' height=\'10\' fill=\'%232980b9\'/%3E%3Crect x=\'-5\' y=\'15\' width=\'10\' height=\'10\' fill=\'%232980b9\'/%3E%3Crect x=\'-5\' y=\'30\' width=\'10\' height=\'10\' fill=\'%232980b9\'/%3E%3C/g%3E%3C/svg%3E');"></div>
                 <ul class="step-list">
                     <li><strong>Hairnet & Beard Snood:</strong> Put on your hairnet first (and beard snood if needed). You may need two hairnets for longer hair</li>
                     <li><strong>Hat & Footwear:</strong> Put on your hat and appropriate boots/shoes</li>
@@ -677,27 +588,19 @@
             </div>
 
             <div class="lesson-section">
-                <h3>🏭 Removing PPE Safely</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🏭</div>
-                        <div><strong>Leaving Production</strong><br>Remove all PPE except hats, hairnets, and shoes</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🗑️</div>
-                        <div><strong>Dispose Properly</strong><br>Hairnets must be discarded and not reused</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">☕</div>
-                        <div><strong>Rest Breaks</strong><br>Remove white coat before eating, smoking, or using toilet</div>
-                    </div>
+                <h3>📝 The Golden Rules</h3>
+                <div class="highlight-box important">
+                    <strong>🚨 Critical:</strong> All PPE (except boots) must be kept off the floor. If it touches the floor, discard and replace immediately!
+                </div>
+                <div class="highlight-box">
+                    <strong>📦 Storage:</strong> Personal lockers are for personal items only. PPE is company-issued and must NOT be taken home.
                 </div>
             </div>
 
             <!-- Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz2">
                     <h4>What should you do if PPE (except boots) comes into contact with the floor?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, false)">Clean and reuse</div>
@@ -706,7 +609,7 @@
                         <div class="quiz-option" onclick="selectOption(this, true)">Discard and replace immediately</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz2')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -714,7 +617,7 @@
                 <button class="btn btn-success" onclick="completeModule(2)">Complete Module 2 →</button>
             </div>
         </div>
-
+        
         <!-- Module 3: Hygiene & Food Safety -->
         <div id="module3" class="content-area">
             <div class="content-header">
@@ -724,7 +627,7 @@
 
             <div class="lesson-section">
                 <h3>🙌 Hand Washing - Your First Defence</h3>
-                <div class="image-placeholder">🙌 Proper Hand Washing Technique</div>
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Cpath d=\'M150,150 C120,150 120,100 150,100 L250,100 C280,100 280,150 250,150\' fill=\'%23ecf0f1\' stroke=\'%23bdc3c7\' stroke-width=\'4\'/%3E%3Crect x=\'180\' y=\'70\' width=\'40\' height=\'30\' fill=\'%233498db\'/%3E%3Cpath d=\'M120,80 C110,70 120,50 140,50 C160,50 150,80 140,80\' fill=\'rgba(255,255,255,0.8)\'/%3E%3Cpath d=\'M130,90 C120,80 130,60 150,60 C170,60 160,90 150,90\' fill=\'rgba(255,255,255,0.7)\'/%3E%3Cpath d=\'M140,100 C130,90 140,70 160,70 C180,70 170,100 160,100\' fill=\'rgba(255,255,255,0.6)\'/%3E%3Cpath d=\'M200,120 Q220,90 240,120\' stroke=\'%233498db\' stroke-width=\'4\' fill=\'none\'/%3E%3Cpath d=\'M205,130 Q220,100 235,130\' stroke=\'%233498db\' stroke-width=\'4\' fill=\'none\'/%3E%3C/svg%3E');"></div>
                 
                 <ul class="step-list">
                     <li><strong>Wet hands:</strong> Use running water</li>
@@ -735,112 +638,23 @@
                     <li><strong>Apply disinfectant:</strong> Rub in hand sanitizer</li>
                 </ul>
             </div>
-
-            <div class="lesson-section">
-                <h3>⏰ When to Wash Your Hands</h3>
-                <div class="highlight-box important">
-                    <strong>🚨 Critical Times:</strong> You MUST wash your hands at these specific times to maintain food safety standards.
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🏭</div>
-                        <div><strong>Accessing Production Area</strong><br>Before entering any production space</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🍽️</div>
-                        <div><strong>Post-Meal Hygiene</strong><br>After eating any food</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🚭</div>
-                        <div><strong>Following Smoking</strong><br>After any smoking break</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🚽</div>
-                        <div><strong>After Toilet Use</strong><br>Essential after using facilities</div>
-                    </div>
-                </div>
-
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🤚</div>
-                        <div><strong>Contact with the Floor</strong><br>After touching floor surfaces</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🪜</div>
-                        <div><strong>Using Ladders</strong><br>After using any ladder equipment</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👟</div>
-                        <div><strong>After Tying Shoelaces</strong><br>After touching shoes or laces</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🧤</div>
-                        <div><strong>Dealing with Contaminated Materials</strong><br>After handling any contaminated items</div>
-                    </div>
-                </div>
-            </div>
-
+            
             <div class="lesson-section">
                 <h3>🩹 Managing Cuts and Grazes</h3>
                 <div class="highlight-box important">
                     <strong>🚨 Important:</strong> All cuts and grazes must be covered with waterproof, blue metal detectable plasters provided by the company.
                 </div>
-                
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🩹</div>
-                        <div><strong>Company Plasters Only</strong><br>Must be applied by authorised person</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🧤</div>
-                        <div><strong>Gloves Over Plasters</strong><br>When handling food</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📢</div>
-                        <div><strong>Report Lost Plasters</strong><br>Immediately - full investigation required</div>
-                    </div>
-                </div>
-
-                <ul class="step-list">
-                    <li><strong>Covering Cuts and Grazes:</strong> All cuts and grazes on exposed skin must be covered with waterproof, blue metal detectable plasters provided by the company</li>
-                    <li><strong>Authorised Application:</strong> Plasters must be applied by an authorised person - never use personal plasters</li>
-                    <li><strong>Food Handling Protection:</strong> When handling food, company-issued plasters must be covered with a glove</li>
-                    <li><strong>Lost Plaster Protocol:</strong> Report lost plasters immediately - a full investigation must be conducted to locate them</li>
-                    <li><strong>End of Shift Procedure:</strong> At the end of your shift, show your plaster to the person who issued it to you, so we can record that it has not been lost or damaged</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>📋 Remember:</strong> Plaster accountability is crucial for food safety - we must track every plaster from issue to return.
+                    <div class="icon-item"><div class="icon">🩹</div><strong>Company Plasters Only</strong><br>Must be applied by authorised person</div>
+                    <div class="icon-item"><div class="icon">🧤</div><strong>Gloves Over Plasters</strong><br>When handling food</div>
+                    <div class="icon-item"><div class="icon">📢</div><strong>Report Lost Plasters</strong><br>Immediately - full investigation required</div>
                 </div>
             </div>
-
-            <div class="lesson-section">
-                <h3>💄 Personal Care Guidelines</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">💅</div>
-                        <div><strong>Fingernails</strong><br>Short, clean, unvarnished. No false nails</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">💄</div>
-                        <div><strong>Makeup</strong><br>Minimal amount, clean and not excessive</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👁️</div>
-                        <div><strong>False Eyelashes</strong><br>Prohibited</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🧴</div>
-                        <div><strong>Strong Scents</strong><br>Avoid excessive perfume or strong-smelling creams</div>
-                    </div>
-                </div>
-            </div>
-
+            
             <!-- Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz3">
                     <h4>What type of plasters must be used for cuts and grazes?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, false)">Any waterproof plaster</div>
@@ -849,7 +663,7 @@
                         <div class="quiz-option" onclick="selectOption(this, false)">Clear plastic plasters</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz3')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -866,56 +680,15 @@
             </div>
 
             <div class="lesson-section">
-                <h3>👥 Site Access & Visitor Control</h3>
-                <div class="highlight-box important">
-                    <strong>🚨 Key Responsibility:</strong> Challenge unknown visitors and alert factory management immediately if you have any doubts.
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🚪</div>
-                        <div><strong>Access Control</strong><br>All doors and gates must be closed at all times</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🔍</div>
-                        <div><strong>Security Checks</strong><br>Management may request searches with same-sex witness</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>📱 Personal Devices & Communication</h3>
-                <div class="highlight-box">
-                    <strong>📵 Important:</strong> Using company communication systems (fax, phone, computer) requires authorised management approval.
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🔌</div>
-                        <div><strong>Electrical Equipment</strong><br>Leave at home if possible, or secure in locker</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👤</div>
-                        <div><strong>Personal Responsibility</strong><br>You are responsible for your belongings</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
                 <h3>📹 CCTV Surveillance</h3>
-                <div class="image-placeholder">📹 CCTV Monitoring System</div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Crect x=\'150\' y=\'70\' width=\'100\' height=\'60\' rx=\'10\' fill=\'%237f8c8d\'/%3E%3Ccircle cx=\'200\' cy=\'100\' r=\'20\' fill=\'%232c3e50\'/%3E%3Ccircle cx=\'200\' cy=\'100\' r=\'10\' fill=\'%23e74c3c\'/%3E%3Cpath d=\'M200 130 L180 160 L220 160 Z\' fill=\'%2395a5a6\'/%3E%3C/svg%3E');"></div>
                 <div class="highlight-box">
                     <strong>🎯 Purpose:</strong> CCTV provides a safe environment, protects property, deters crime, and may be used in disciplinary procedures.
                 </div>
-                
                 <ul class="step-list">
                     <li><strong>24/7 Operation:</strong> System operates continuously with respect for privacy</li>
                     <li><strong>GDPR Compliant:</strong> Meets all legal requirements and BRC standards</li>
-                    <li><strong>Strategic Placement:</strong> Cameras throughout the site, not always in obvious locations</li>
-                    <li><strong>Limited Access:</strong> Only authorised staff can access images</li>
                     <li><strong>Data Retention:</strong> Footage retained for maximum 30 days unless required for ongoing investigation</li>
-                    <li><strong>Limited Disclosure:</strong> Images only disclosed to law enforcement or for valid documented reasons like insurance claims</li>
                 </ul>
             </div>
 
@@ -924,64 +697,17 @@
                 <div class="highlight-box important">
                     <strong>📋 Important:</strong> All requests for CCTV access must follow proper procedures to protect privacy and comply with GDPR.
                 </div>
-                
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🗓️</div>
-                        <div><strong>Retention Period</strong><br>Maximum 30 days storage</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">✍️</div>
-                        <div><strong>Written Requests</strong><br>Must be made in writing to Scott Davies</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🏢</div>
-                        <div><strong>Official Address</strong><br>Hilltop Honey Vastre address</div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <strong>📞 Access Procedure:</strong> Requests for access to CCTV material should be made in writing to Scott Davies at the Hilltop Honey Vastre address.
+                    <div class="icon-item"><div class="icon">🗓️</div><strong>Retention Period</strong><br>Maximum 30 days storage</div>
+                    <div class="icon-item"><div class="icon">✍️</div><strong>Written Requests</strong><br>Must be made in writing to Scott Davies</div>
+                    <div class="icon-item"><div class="icon">🏢</div><strong>Official Address</strong><br>Hilltop Honey Vastre address</div>
                 </div>
             </div>
-
-            <div class="lesson-section">
-                <h3>📢 Reporting Security & Safety Concerns</h3>
-                <div class="highlight-box success">
-                    <strong>🛡️ Your Role:</strong> Everyone plays a vital part in maintaining a secure workplace. If you see something, say something!
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">⚠️</div>
-                        <div><strong>Safety Concerns</strong><br>Report any safety hazards immediately</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🔒</div>
-                        <div><strong>Security Issues</strong><br>Alert management to security breaches</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👨‍💼</div>
-                        <div><strong>Contact Management</strong><br>Speak to any manager as soon as possible</div>
-                    </div>
-                </div>
-
-                <ul class="step-list">
-                    <li><strong>Immediate Reporting:</strong> If you have any concerns about security or safety, contact any manager as soon as possible</li>
-                    <li><strong>Your Input Matters:</strong> Your observations and concerns are valuable in maintaining a secure workplace</li>
-                    <li><strong>No Concern Too Small:</strong> Better to report something that turns out to be nothing than to miss something important</li>
-                    <li><strong>Shared Responsibility:</strong> Security and safety are everyone's responsibility, not just management's</li>
-                </ul>
-
-                <div class="highlight-box important">
-                    <strong>🤝 Remember:</strong> By working together, we can ensure a safe and productive workplace for everyone.
-                </div>
-            </div>
-
+            
             <!-- Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz4">
                     <h4>How long is CCTV footage retained for?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, false)">7 days</div>
@@ -990,7 +716,7 @@
                         <div class="quiz-option" onclick="selectOption(this, false)">Permanently stored</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz4')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -1001,59 +727,14 @@
 
         <!-- Module 5: Environmental Responsibility -->
         <div id="module5" class="content-area">
-            <div class="content-header">
+             <div class="content-header">
                 <h2>🌱 Module 5: Environmental Responsibility</h2>
                 <p>We're committed to protecting our environment. Learn how you can be part of our green journey!</p>
             </div>
 
             <div class="lesson-section">
-                <h3>🌍 Why Environmental Awareness Matters</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">👥</div>
-                        <div><strong>Employee Wellbeing</strong><br>A healthy environment benefits everyone</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🤝</div>
-                        <div><strong>Customer Trust</strong><br>Shows our commitment to responsibility</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🏘️</div>
-                        <div><strong>Community Impact</strong><br>Being responsible neighbors</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📈</div>
-                        <div><strong>Business Success</strong><br>Sustainable practices for the future</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>🚨 Spillage Best Practices</h3>
-                <div class="highlight-box important">
-                    <strong>🐝 Critical:</strong> Spills can harm local bee populations! Clean up immediately and report significant spillages to your manager.
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🧽</div>
-                        <div><strong>Immediate Action</strong><br>Clear up spills straight away</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🧰</div>
-                        <div><strong>Spill Kits</strong><br>Located around the site - get training if needed</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🚰</div>
-                        <div><strong>No Drains</strong><br>Never put honey/syrups down drains</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
                 <h3>♻️ The 5 Rs of Waste Reduction</h3>
-                <div class="image-placeholder">♻️ Waste Reduction Hierarchy</div>
-                
+                <div class="image-placeholder" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f0f2f5\'/%3E%3Cg fill=\'%2327ae60\'%3E%3Cpath d=\'M180 80 L150 110 L180 140 L180 120 L220 120 L220 150 L250 120 L220 90 L220 110 L180 110 Z\'/%3E%3C/g%3E%3Ctext x=\'100\' y=\'100\' font-size=\'14\'%3E1. Refuse%3C/text%3E%3Ctext x=\'100\' y=\'120\' font-size=\'14\'%3E2. Reduce%3C/text%3E%3Ctext x=\'300\' y=\'100\' text-anchor=\'end\' font-size=\'14\'%3E3. Reuse%3C/text%3E%3Ctext x=\'300\' y=\'120\' text-anchor=\'end\' font-size=\'14\'%3E4. Repurpose%3C/text%3E%3Ctext x=\'200\' y=\'170\' text-anchor=\'middle\' font-size=\'14\' font-weight=\'bold\'%3E5. RECYCLE%3C/text%3E%3C/svg%3E');"></div>
                 <ul class="step-list">
                     <li><strong>Refuse:</strong> Avoid materials with significant environmental impact</li>
                     <li><strong>Reduce:</strong> Minimize the amount of materials you use</li>
@@ -1062,29 +743,23 @@
                     <li><strong>Recycle:</strong> Process materials to make something new</li>
                 </ul>
             </div>
-
+            
             <div class="lesson-section">
-                <h3>🗂️ Canteen Waste Segregation</h3>
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🥗</div>
-                        <div><strong>Food Waste</strong><br>Designated compost bin</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">♻️</div>
-                        <div><strong>Recycling</strong><br>Paper, plastic, glass in recycling bins</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🗑️</div>
-                        <div><strong>General Waste</strong><br>Everything else in general waste bins</div>
-                    </div>
+                <h3>🚨 Spillage Best Practices</h3>
+                 <div class="highlight-box important">
+                    <strong>🐝 Critical:</strong> Spills can harm local bee populations! Clean up immediately and report significant spillages to your manager.
+                </div>
+                 <div class="icons">
+                    <div class="icon-item"><div class="icon">🧽</div><strong>Immediate Action</strong><br>Clear up spills straight away</div>
+                    <div class="icon-item"><div class="icon">🧰</div><strong>Spill Kits</strong><br>Located around the site</div>
+                    <div class="icon-item"><div class="icon">🚰</div><strong>No Drains</strong><br>Never put honey/syrups down drains</div>
                 </div>
             </div>
 
             <!-- Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz5">
                     <h4>Why is environmental awareness important at Hilltop?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, false)">To comply with regulations only</div>
@@ -1093,7 +768,7 @@
                         <div class="quiz-option" onclick="selectOption(this, true)">All of the above: employee well-being, customer trust, community impact and business success</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz5')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -1114,55 +789,11 @@
                 <div class="highlight-box important">
                     <strong>🚨 Critical:</strong> You MUST report these conditions to your manager/team leader/HR before starting work.
                 </div>
-                
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">🤒</div>
-                        <div><strong>Enteric Fever</strong><br>Typhoid and Paratyphoid</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🦠</div>
-                        <div><strong>Infections</strong><br>Salmonella, Shigella, E. coli, Cholera</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🤢</div>
-                        <div><strong>Intestinal Issues</strong><br>Diarrhea, vomiting, stomach disorders</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">🩹</div>
-                        <div><strong>Skin Conditions</strong><br>Infected cuts, boils, eczema, dermatitis</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-section">
-                <h3>📋 Reporting Requirements</h3>
-                <ul class="step-list">
-                    <li><strong>Before Work:</strong> Report any listed conditions to manager/team leader/HR</li>
-                    <li><strong>After Time Off:</strong> Report if conditions occurred during absence</li>
-                    <li><strong>Household Illness:</strong> Report recurring diarrhea/vomiting in family members</li>
-                </ul>
-            </div>
-
-            <div class="lesson-section">
-                <h3>⚖️ Legal & Employment Obligations</h3>
-                <div class="highlight-box important">
-                    <strong>🚨 Warning:</strong> Failure to report can lead to disciplinary action, including termination.
-                </div>
-                
-                <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">⚖️</div>
-                        <div><strong>Legal Obligation</strong><br>Reporting is a legal requirement</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📄</div>
-                        <div><strong>Employment Condition</strong><br>Compliance is required for food handlers</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">⚠️</div>
-                        <div><strong>Consequences</strong><br>Non-compliance may result in dismissal</div>
-                    </div>
+                    <div class="icon-item"><div class="icon">🤒</div><strong>Enteric Fever</strong><br>Typhoid and Paratyphoid</div>
+                    <div class="icon-item"><div class="icon">🦠</div><strong>Infections</strong><br>Salmonella, Shigella, E. coli, Cholera</div>
+                    <div class="icon-item"><div class="icon">🤢</div><strong>Intestinal Issues</strong><br>Diarrhea, vomiting, etc.</div>
+                    <div class="icon-item"><div class="icon">🩹</div><strong>Skin Conditions</strong><br>Infected cuts, boils, etc.</div>
                 </div>
             </div>
 
@@ -1171,27 +802,17 @@
                 <div class="highlight-box success">
                     <strong>📞 Report Concerns:</strong> We have a confidential system for reporting concerns about product safety, integrity, quality, and legality.
                 </div>
-                
                 <div class="icons">
-                    <div class="icon-item">
-                        <div class="icon">👨‍💼</div>
-                        <div><strong>Line Manager</strong><br>Your immediate supervisor</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">👥</div>
-                        <div><strong>HR Department</strong><br>Human Resources team</div>
-                    </div>
-                    <div class="icon-item">
-                        <div class="icon">📫</div>
-                        <div><strong>Suggestion Box</strong><br>Anonymous reporting in canteen</div>
-                    </div>
+                    <div class="icon-item"><div class="icon">👨‍💼</div><strong>Line Manager</strong><br>Your immediate supervisor</div>
+                    <div class="icon-item"><div class="icon">👥</div><strong>HR Department</strong><br>Human Resources team</div>
+                    <div class="icon-item"><div class="icon">📫</div><strong>Suggestion Box</strong><br>Anonymous reporting in canteen</div>
                 </div>
             </div>
 
             <!-- Knowledge Check -->
             <div class="quiz-container">
                 <h3>🧠 Quick Knowledge Check</h3>
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz6">
                     <h4>What is the primary purpose of the confidential reporting system?</h4>
                     <div class="quiz-options">
                         <div class="quiz-option" onclick="selectOption(this, true)">To report concerns related to product safety, integrity, quality and legality</div>
@@ -1200,7 +821,7 @@
                         <div class="quiz-option" onclick="selectOption(this, false)">To complain about working conditions</div>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="checkQuizAnswer()" style="margin-top: 15px;">Check Answer</button>
+                <button class="btn btn-primary" onclick="checkQuizAnswer('quiz6')" style="margin-top: 15px;">Check Answer</button>
             </div>
 
             <div class="navigation">
@@ -1209,7 +830,7 @@
             </div>
         </div>
 
-<!-- Completion Certificate -->
+        <!-- Completion Certificate -->
         <div id="completion" class="content-area">
             <div style="text-align: center; padding: 40px;">
                 <h1 style="color: #28a745; font-size: 3rem;">🎉 Well Done!</h1>
@@ -1219,47 +840,34 @@
                 <div style="background: linear-gradient(135deg, #fff3cd, #ffeaa7); border-radius: 15px; padding: 30px; margin: 30px 0; border: 3px solid #ffd700;">
                     <h3 style="color: #333;">📚 Training Modules Completed</h3>
                     <p style="font-size: 1.2rem; margin: 20px 0;">You have successfully completed all training modules covering:</p>
-                    <ul style="text-align: left; display: inline-block; font-size: 1.1rem; line-height: 1.6;">
-                        <li>Factory Rules & Safety Protocols</li>
-                        <li>PPE & Protective Equipment</li>
-                        <li>Hygiene & Food Safety</li>
-                        <li>Security & Site Access</li>
-                        <li>Environmental Responsibility</li>
-                        <li>Health Reporting & Legal Requirements</li>
+                    <ul style="text-align: left; display: inline-block; font-size: 1.1rem; line-height: 1.6; list-style-position: inside;">
+                        <li>✔️ Factory Rules & Safety Protocols</li>
+                        <li>✔️ PPE & Protective Equipment</li>
+                        <li>✔️ Hygiene & Food Safety</li>
+                        <li>✔️ Security & Site Access</li>
+                        <li>✔️ Environmental Responsibility</li>
+                        <li>✔️ Health Reporting & Legal Requirements</li>
                     </ul>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 15px; padding: 25px; margin: 30px 0; border: 3px solid #2196f3;">
+                <div style="background: linear-gradient(135deg, #d4edda, #c3e6cb); border-radius: 15px; padding: 25px; margin: 30px 0; border: 3px solid #28a745;">
                     <h3 style="color: #333;">📝 Final Assessment Required</h3>
                     <p style="font-size: 1.2rem; color: #333; margin: 15px 0; font-weight: bold;">
                         To complete your induction, you must now take the final assessment.
                     </p>
                     <p style="font-size: 1.1rem; color: #666; margin: 15px 0;">
-                        The assessment is done through a Microsoft Form and tests your knowledge of all the topics you've just learned.
+                        Click the button below to open the Microsoft Form and test your knowledge. You must pass to receive your certification.
                     </p>
-                    <p style="font-size: 1rem; color: #666; margin: 15px 0;">
-                        You need to pass this assessment to receive your official Hilltop Honey certification and begin working.
-                    </p>
-                    
-                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 20px 0; border-left: 4px solid #f4a261;">
-                        <p style="font-size: 1rem; color: #333; margin: 10px 0;">
-                            <strong>Ready to take your assessment?</strong><br>
-                            Click the button below to open the Microsoft Form:
-                        </p>
-                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=kwUl-gL0HEmwt61NYzBnUmEnHjTZ8XFAti5gOD7EzBVUMk9ZNERUQkZLU0hRMkdBVlNURkJGNkJKUC4u" 
-                           target="_blank" 
-                           style="display: inline-block; background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin: 15px 10px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); transition: transform 0.2s ease;">
-                            🚀 Take Final Assessment
-                        </a>
-                    </div>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=kwUl-gL0HEmwt61NYzBnUmEnHjTZ8XFAti5gOD7EzBVUMk9ZNERUQkZLU0hRMkdBVlNURkJGNkJKUC4u" 
+                       target="_blank" 
+                       style="display: inline-block; background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-top: 15px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); transition: transform 0.2s ease;">
+                        🚀 Take Final Assessment
+                    </a>
                 </div>
                 
                 <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 15px; padding: 20px; margin: 20px 0; border: 2px solid #ff9800;">
                     <h4 style="color: #333; margin-bottom: 15px;">Need to Review Before Your Assessment?</h4>
-                    <p style="font-size: 1rem; color: #666; margin-bottom: 15px;">
-                        Take your time! You can review any of the training modules before taking your assessment.
-                    </p>
-                    <button class="btn btn-primary" onclick="showModuleOverview()" style="background: linear-gradient(135deg, #f4a261, #e76f51); border: none; padding: 12px 25px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    <button class="btn btn-primary" onclick="showModuleOverview()">
                         📚 Review Modules
                     </button>
                 </div>
@@ -1267,64 +875,65 @@
                 <p style="font-size: 1.2rem; color: #666; margin-top: 30px;">Welcome to the Hilltop Honey team! 🍯</p>
             </div>
         </div>
+    </div>
 
     <script>
-        // Training state management
         let currentModule = 0;
-        let completedModules = [];
-        let currentQuestion = 0;
-        let quizAnswered = false;
+        const completedModules = new Set();
+        const totalModules = 6;
+        let quizStates = {};
 
-        // Initialize training
         function initializeTraining() {
             showModuleOverview();
             updateProgress();
+            updateModuleCards();
         }
 
-        // Show module overview
         function showModuleOverview() {
             hideAllContent();
             document.getElementById('moduleOverview').style.display = 'grid';
             updateModuleCards();
         }
 
-        // Start a specific module
         function startModule(moduleNumber) {
-            if (moduleNumber === 1 || completedModules.includes(moduleNumber - 1)) {
+            // Module 1 is always available, others require previous to be complete
+            if (moduleNumber === 1 || completedModules.has(moduleNumber - 1)) {
                 currentModule = moduleNumber;
                 hideAllContent();
                 document.getElementById(`module${moduleNumber}`).classList.add('active');
-                updateProgress();
             } else {
                 alert('Please complete the previous modules first!');
             }
         }
 
-        // Complete a module
         function completeModule(moduleNumber) {
-            if (!completedModules.includes(moduleNumber)) {
-                completedModules.push(moduleNumber);
+            // Check if the quiz for this module has been answered correctly
+            const quizContainer = document.getElementById(`module${moduleNumber}`).querySelector('.quiz-container');
+            if (quizContainer) {
+                const quizId = quizContainer.querySelector('.quiz-question').id;
+                if (!quizStates[quizId] || !quizStates[quizId].correct) {
+                    alert('Please answer the knowledge check question correctly to complete the module.');
+                    return;
+                }
             }
-            
+
+            completedModules.add(moduleNumber);
             updateProgress();
-            updateModuleCards();
-            
-            if (completedModules.length === 6) {
+
+            if (completedModules.size === totalModules) {
                 showCompletion();
             } else {
                 showModuleOverview();
             }
         }
 
-        // Update progress bar
         function updateProgress() {
-            const progress = (completedModules.length / 6) * 100;
+            const progress = (completedModules.size / totalModules) * 100;
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${progress}%`;
             progressBar.textContent = `${Math.round(progress)}% Complete`;
         }
 
-        // Update module cards
         function updateModuleCards() {
             const cards = document.querySelectorAll('.module-card');
             cards.forEach((card, index) => {
@@ -1333,11 +942,11 @@
                 
                 card.classList.remove('completed', 'current');
                 
-                if (completedModules.includes(moduleNum)) {
+                if (completedModules.has(moduleNum)) {
                     card.classList.add('completed');
                     badge.className = 'status-badge completed-badge';
                     badge.textContent = 'COMPLETED';
-                } else if (moduleNum === 1 || completedModules.includes(moduleNum - 1)) {
+                } else if (moduleNum === 1 || completedModules.has(moduleNum - 1)) {
                     card.classList.add('current');
                     badge.className = 'status-badge current-badge';
                     badge.textContent = 'AVAILABLE';
@@ -1348,179 +957,60 @@
             });
         }
 
-        // Hide all content areas
         function hideAllContent() {
-            const contentAreas = document.querySelectorAll('.content-area');
-            contentAreas.forEach(area => {
-                area.classList.remove('active');
-            });
+            document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
             document.getElementById('moduleOverview').style.display = 'none';
         }
 
-        // Quiz functionality
-        function selectOption(option, isCorrect) {
-            if (quizAnswered) return;
-            
-            const options = option.parentNode.querySelectorAll('.quiz-option');
+        function selectOption(optionEl, isCorrect) {
+            const quizQuestionEl = optionEl.closest('.quiz-question');
+            const quizId = quizQuestionEl.id;
+
+            if (quizStates[quizId] && quizStates[quizId].answered) return;
+
+            const options = quizQuestionEl.querySelectorAll('.quiz-option');
             options.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            option.dataset.correct = isCorrect;
+            optionEl.classList.add('selected');
+
+            quizStates[quizId] = { selected: optionEl, correct: isCorrect };
         }
 
-        function checkQuizAnswer() {
-            if (quizAnswered) return;
-            
-            const selectedOption = document.querySelector('.quiz-option.selected');
-            if (!selectedOption) {
+        function checkQuizAnswer(quizId) {
+            const state = quizStates[quizId];
+            if (!state || !state.selected) {
                 alert('Please select an answer first!');
                 return;
             }
-            
-            const options = document.querySelectorAll('.quiz-option');
-            options.forEach(option => {
-                if (option.dataset.correct === 'true') {
-                    option.classList.add('correct');
-                } else if (option.classList.contains('selected')) {
-                    option.classList.add('incorrect');
-                }
-            });
-            
-            quizAnswered = true;
-            
-            setTimeout(() => {
-                const options = document.querySelectorAll('.quiz-option');
-                options.forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
-                });
-                quizAnswered = false;
-            }, 3000);
-        }
 
-        // Final Quiz
-        const finalQuizQuestions = [
-            {
-                question: "Where is smoking permitted in the factory?",
-                options: ["Anywhere outside", "In offices", "Designated smoking area only", "Production areas"],
-                correct: 2
-            },
-            {
-                question: "What should you do if PPE touches the floor?",
-                options: ["Clean and reuse", "Continue using", "Discard and replace immediately", "Put in locker"],
-                correct: 2
-            },
-            {
-                question: "What type of plasters must be used for cuts?",
-                options: ["Any waterproof", "Personal plasters", "Blue metal detectable company plasters", "Clear plastic"],
-                correct: 2
-            },
-            {
-                question: "What should you do with unidentified visitors?",
-                options: ["Challenge and alert management", "Call police immediately", "Ignore them", "Ask colleague to handle"],
-                correct: 0
-            },
-            {
-                question: "How long is CCTV footage retained?",
-                options: ["7 days", "Maximum 30 days unless required for investigation", "90 days", "Permanently"],
-                correct: 1
-            },
-            {
-                question: "Why is environmental awareness important?",
-                options: ["Regulations only", "Customer trust only", "Employee wellbeing only", "All: wellbeing, trust, community, business"],
-                correct: 3
-            },
-            {
-                question: "Who must you report health conditions to?",
-                options: ["Only HR", "Only your manager", "Manager/team leader/HR", "No one"],
-                correct: 2
-            },
-            {
-                question: "What happens if you don't report required health conditions?",
-                options: ["Nothing", "Verbal warning only", "Disciplinary action including possible termination", "Just a note in file"],
-                correct: 2
-            },
-            {
-                question: "What happens if you don't report required health conditions?",
-                options: ["Nothing", "Verbal warning only", "Disciplinary action including possible termination", "Just a note in file"],
-                correct: 2
-            }
-        ];
+            if(state.answered) return;
 
-        let finalQuizAnswers = {};
-        let finalQuizScore = 0;
+            const selectedOption = state.selected;
+            const isCorrect = state.correct;
 
-        function startFinalQuiz() {
-            hideAllContent();
-            document.getElementById('finalQuiz').classList.add('active');
-            generateFinalQuiz();
-        }
-
-        function generateFinalQuiz() {
-            const container = document.getElementById('quizQuestions');
-            container.innerHTML = '';
-            
-            finalQuizQuestions.forEach((q, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'quiz-question';
-                questionDiv.innerHTML = `
-                    <h4>Question ${index + 1}: ${q.question}</h4>
-                    <div class="quiz-options">
-                        ${q.options.map((option, optIndex) => `
-                            <div class="quiz-option" onclick="selectFinalQuizOption(${index}, ${optIndex}, this)">
-                                ${option}
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                container.appendChild(questionDiv);
-            });
-            
-            document.getElementById('submitQuiz').style.display = 'inline-block';
-        }
-
-        function selectFinalQuizOption(questionIndex, optionIndex, element) {
-            const options = element.parentNode.querySelectorAll('.quiz-option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            finalQuizAnswers[questionIndex] = optionIndex;
-        }
-
-        function submitFinalQuiz() {
-            if (Object.keys(finalQuizAnswers).length !== finalQuizQuestions.length) {
-                alert('Please answer all questions before submitting!');
-                return;
-            }
-            
-            finalQuizScore = 0;
-            finalQuizQuestions.forEach((q, index) => {
-                if (finalQuizAnswers[index] === q.correct) {
-                    finalQuizScore++;
-                }
-            });
-            
-            const percentage = (finalQuizScore / finalQuizQuestions.length) * 100;
-            
-            if (percentage >= 80) {
-                showCompletion();
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
             } else {
-                alert(`You scored ${Math.round(percentage)}%. You need 80% to pass. Please review the modules and try again.`);
-                showModuleOverview();
+                selectedOption.classList.add('incorrect');
+                const correctOption = selectedOption.parentElement.querySelector('[data-correct="true"]');
+                if (correctOption) correctOption.classList.add('correct');
+            }
+
+            state.answered = true;
+
+            // Mark correct answer for completion logic
+            if (isCorrect) {
+                 quizStates[quizId].correct = true;
+            } else {
+                 quizStates[quizId].correct = false;
             }
         }
 
         function showCompletion() {
             hideAllContent();
             document.getElementById('completion').classList.add('active');
-            updateProgress();
         }
 
-        function downloadCertificate() {
-            alert('Certificate download functionality would be implemented here!');
-        }
-
-        // Initialize when page loads
-        window.onload = function() {
-            initializeTraining();
-        };
+        window.onload = initializeTraining;
     </script>
 </body>
 </html>
