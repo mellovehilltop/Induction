@@ -3,34 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hilltop Honey - Induction Training</title>
+    <title>Hilltop Honey - Interactive Induction Training</title>
+    <!-- Link to your central stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <!-- Header content... -->
+            <div class="logo-container">
+                <div class="hilltop-logo">
+                    <span class="beehive-icon">🍯</span>HILLTOP
+                </div>
+            </div>
+            <h1>Welcome to Hilltop Honey</h1>
+            <p>Interactive Induction Training - Your journey to becoming a certified food handler starts here!</p>
         </div>
 
-        <!-- The module grid now uses standard links -->
+        <div class="progress-container">
+            <!-- This is a visual placeholder. Tracking progress across multiple pages requires more advanced JavaScript (using localStorage), which can be added later. -->
+            <div class="progress-bar" style="width:0%;">0% Complete</div>
+        </div>
+
+        <!-- The module grid uses standard links to navigate to each module's HTML page -->
         <div id="moduleOverview" class="module-grid">
+            
+            <!-- Module 1 Card -->
             <a href="module1.html" class="module-card">
-                <div class="module-icon">⚖️</div>
+                <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e76f51);">⚖️</div>
                 <h3>Factory Rules & Safety</h3>
-                <p>Learn about our essential rules, legal requirements, and safety protocols.</p>
+                <p>Learn about our essential rules, legal requirements, and safety protocols to keep everyone safe.</p>
+                <div class="duration">📅 10 minutes</div>
             </a>
+
+            <!-- Module 2 Card -->
             <a href="module2.html" class="module-card">
-                <div class="module-icon">🦺</div>
+                <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #f4a261);">🦺</div>
                 <h3>PPE & Protective Equipment</h3>
-                <p>Master the correct use of personal protective equipment.</p>
+                <p>Master the correct use of personal protective equipment and understand why it's crucial.</p>
+                <div class="duration">📅 7 minutes</div>
             </a>
+
+            <!-- Module 3 Card -->
             <a href="module3.html" class="module-card">
-                <div class="module-icon">🧼</div>
+                <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">🧼</div>
                 <h3>Hygiene & Food Safety</h3>
-                <p>Essential hygiene practices and food safety protocols.</p>
+                <p>Essential hygiene practices and food safety protocols to protect our products and customers.</p>
+                <div class="duration">📅 9 minutes</div>
             </a>
-            <!-- Add cards 4, 5, and 6 here, linking to module4.html, etc. -->
+
+            <!-- Module 4 Card -->
+            <a href="module4.html" class="module-card">
+                <div class="module-icon" style="background: linear-gradient(135deg, #e76f51, #f4a261);">🔒</div>
+                <h3>Security & Site Access</h3>
+                <p>Understand our security measures, CCTV policies, and how to maintain a secure workplace.</p>
+                <div class="duration">📅 8 minutes</div>
+            </a>
+
+            <!-- Module 5 Card -->
+            <a href="module5.html" class="module-card">
+                <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #e76f51);">🌱</div>
+                <h3>Environmental Responsibility</h3>
+                <p>Learn how we protect the environment and your role in our sustainability efforts.</p>
+                <div class="duration">📅 8 minutes</div>
+            </a>
+            
+            <!-- Module 6 Card -->
+            <a href="module6.html" class="module-card">
+                <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">📋</div>
+                <h3>Health Reporting & Legal</h3>
+                <p>Important health reporting requirements and legal obligations for food handlers.</p>
+                <div class="duration">📅 7 minutes</div>
+            </a>
         </div>
     </div>
+
+    <!-- No JavaScript is needed on this main menu page for basic navigation -->
 </body>
 </html>
