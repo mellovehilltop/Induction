@@ -1,1 +1,120 @@
+/* --- NEW INTERACTIVE SLIDESHOW STYLES --- */
+.slideshow-container {
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
 
+.slides-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.slide-content {
+    flex: 1;
+}
+
+.slide-content h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.slide-content p, .slide-content li {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.slide-content ul {
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+.slide-image {
+    flex: 1;
+    max-width: 45%;
+}
+
+.slide-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* For slides with columns like "Managing Cuts" */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.info-box {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+}
+.info-box h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+.slide-nav:hover {
+    background: #f4a261;
+}
+.slide-nav.prev {
+    left: 15px;
+}
+.slide-nav.next {
+    right: 15px;
+}
+.slide-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.slide-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.dot.active {
+    background: #f4a261;
+}
+/* --- END SLIDESHOW STYLES --- */
