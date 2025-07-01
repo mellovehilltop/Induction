@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilltop Honey - Induction Training</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Header content... -->
+        </div>
 
+        <!-- The module grid now uses standard links -->
+        <div id="moduleOverview" class="module-grid">
+            <a href="module1.html" class="module-card">
+                <div class="module-icon">⚖️</div>
+                <h3>Factory Rules & Safety</h3>
+                <p>Learn about our essential rules, legal requirements, and safety protocols.</p>
+            </a>
+            <a href="module2.html" class="module-card">
+                <div class="module-icon">🦺</div>
+                <h3>PPE & Protective Equipment</h3>
+                <p>Master the correct use of personal protective equipment.</p>
+            </a>
+            <a href="module3.html" class="module-card">
+                <div class="module-icon">🧼</div>
+                <h3>Hygiene & Food Safety</h3>
+                <p>Essential hygiene practices and food safety protocols.</p>
+            </a>
+            <!-- Add cards 4, 5, and 6 here, linking to module4.html, etc. -->
+        </div>
+    </div>
+</body>
+</html>
