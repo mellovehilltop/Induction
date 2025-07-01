@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Hygiene & Food Safety - Hilltop Honey</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Module 3: Hygiene & Food Safety (SLIDESHOW VERSION) -->
+        <div id="module3" class="content-area active"> <!-- "active" makes it visible immediately -->
+            <div class="content-header">
+                <h2>🧼 Module 3: Hygiene & Food Safety</h2>
+                <p>Hygiene is the foundation of food safety. Learn the essential practices that protect our honey and customers.</p>
+            </div>
+        
+            <div class="slideshow-container" data-module-id="3">
+                <div class="slides-wrapper">
+                    <!-- Slide 1: Introduction -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>Personal Hygiene</h3>
+                            <p>This presentation will discuss the importance of hygiene...</p>
+                        </div>
+                    </div>
+        
+                    <!-- Slide 2: Hand Washing -->
+                    <div class="slide">
+                       <!-- ... content for slide 2 ... -->
+                    </div>
+                    
+                    <!-- etc... all your other slides -->
 
+                </div>
+                
+                <!-- Navigation -->
+                <button class="slide-nav prev" disabled>❮</button>
+                <button class="slide-nav next">❯</button>
+                <div class="slide-dots"></div>
+            </div>
+        
+            <!-- The quiz for module 3 -->
+            <div class="quiz-container">
+                <!-- ... quiz content ... -->
+            </div>
+        
+            <div class="navigation">
+                <!-- A link back to the main menu -->
+                <a href="index.html" class="btn btn-warning">← Back to Modules</a>
+                <!-- This could link to the next module -->
+                <a href="module4.html" class="btn btn-success">Complete Module 3 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- The JavaScript needed ONLY for this page's slideshow -->
+    <script>
+        // --- SLIDESHOW SCRIPT ---
+        function setupSlideshow(moduleId) {
+            // ... (The slideshow JS from the previous answer) ...
+        }
+        
+        // Automatically run the setup for this page
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSlideshow(3);
+        });
+    </script>
+</body>
+</html>
