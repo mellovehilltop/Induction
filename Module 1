@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Factory Rules & Guidelines - Hilltop Honey</title>
+    <!-- Link to your central stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- The content-area is set to 'active' so it displays immediately on page load -->
+        <div id="module1" class="content-area active">
+            <div class="content-header">
+                <h2>🏭 Module 1: Factory Rules & Guidelines</h2>
+                <p>Welcome to the factory! These rules and guidelines are here to ensure a safe, secure, and productive work environment for everyone.</p>
+            </div>
+        
+            <!-- Slideshow Container for Module 1 -->
+            <div class="slideshow-container" data-module-id="1">
+                <div class="slides-wrapper">
 
+                    <!-- Slide 1: Title -->
+                    <div class="slide">
+                        <div class="slide-content" style="text-align: center; width: 100%;">
+                            <!-- Assuming you have a logo file like this -->
+                            <img src="images/hilltop-logo.png" alt="Hilltop Honey Logo" style="max-width: 250px; margin-bottom: 30px; border-radius: 0; box-shadow: none;">
+                            <h3>Factory Rules & Guidelines</h3>
+                            <p>Welcome to the factory! These rules and guidelines are here to ensure a safe, secure, and productive work environment for everyone. Please read and follow them carefully.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Legal & Security -->
+                    <div class="slide">
+                        <div class="slide-image">
+                            <img src="images/CCTV.png" alt="CCTV security camera">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Legal & Security Compliance</h3>
+                            <div class="icons" style="flex-direction: column; align-items: flex-start; gap: 25px;">
+                                <div class="icon-item" style="text-align: left;">
+                                    <div class="icon">⚖️</div>
+                                    <strong>Obey the Law</strong><br>Never knowingly break the law or allow others to do so on company property.
+                                </div>
+                                <div class="icon-item" style="text-align: left;">
+                                    <div class="icon">🔒</div>
+                                    <strong>Secure the Site</strong><br>Keep doors and gates closed to prevent unauthorised access or pests.
+                                </div>
+                                <div class="icon-item" style="text-align: left;">
+                                    <div class="icon">👁️</div>
+                                    <strong>Challenge Strangers</strong><br>Question unknown persons and report concerns to management immediately.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Smoking & Vaping -->
+                    <div class="slide">
+                        <div class="slide-image">
+                            <img src="images/smoking.png" alt="Designated smoking area with benches">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Smoking & Vaping Policy</h3>
+                            <ul class="step-list" style="margin-top:0;">
+                                <li><strong>Designated Area Only:</strong> Smoking and vaping are permitted only in the designated smoking area.</li>
+                                <li><strong>No Indoor Smoking:</strong> Smoking and vaping inside the building are strictly prohibited.</li>
+                                <li><strong>Proper Disposal:</strong> Dispose of cigarette butts and vaping waste in provided bins.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Eating & Drinking -->
+                    <div class="slide">
+                        <div class="slide-content" style="width:100%">
+                            <h3>Eating & Drinking Rules</h3>
+                            <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                                <div class="info-box"><h4>Allowed Areas Only</h4><p>Eating, chewing, and drinking are restricted to the canteen, rest areas, and offices.</p></div>
+                                <div class="info-box"><h4>Water</h4><p>Water from fountains can be consumed by the fountains.</p></div>
+                                <div class="info-box"><h4>No Food or Drink</h4><p>No food or drink (except water in designated areas) allowed in production or warehouse areas.</p></div>
+                                <div class="info-box"><h4>No Alcohol</h4><p>Alcohol is strictly forbidden on company premises.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5: Food Storage -->
+                    <div class="slide">
+                        <div class="slide-image">
+                             <img src="images/Food-storage.png" alt="Hallway with red lockers and hooks for coats">
+                        </div>
+                        <div class="slide-content">
+                             <h3>Food Storage & Personal Belongings</h3>
+                             <div class="info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-box"><h4>Food Care</h4><p>Take care of your own food.</p></div>
+                                <div class="info-box"><h4>No Lockers</h4><p>Don't store food in your lockers.</p></div>
+                                <div class="info-box"><h4>Sealed Containers</h4><p>Use sealed containers for storage in provided fridges.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Searches & Cleanliness -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>Searches & Cleanliness</h3>
+                            <ul class="step-list">
+                                <li><strong>Search Policy:</strong> Management may request searches of clothing, baggage, lockers, or vehicles.</li>
+                                <li><strong>Witness Required:</strong> Searches must be conducted by same-sex management with an independent witness.</li>
+                                <li><strong>Clean As You Go:</strong> Always maintain a clean and tidy workspace.</li>
+                                <li><strong>Shared Facilities:</strong> Clean up after yourself when using shared facilities.</li>
+                            </ul>
+                        </div>
+                        <div class="slide-image">
+                            <img src="images/Searches.png" alt="Security guard talking with two employees in a locker room">
+                        </div>
+                    </div>
+
+                    <!-- Slide 7: Equipment & Responsibility -->
+                     <div class="slide">
+                        <div class="slide-image">
+                            <img src="images/Personal-equipment.png" alt="Person placing a device into a red locker">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Equipment & Personal Responsibility</h3>
+                             <ul class="step-list">
+                                <li><strong>Authorisation Required:</strong> Company equipment (fax, phone, computer) requires permission.</li>
+                                <li><strong>Restricted Devices:</strong> No photographic or recording equipment in production areas.</li>
+                                <li><strong>Electrical Equipment:</strong> Keep secured in a locker.</li>
+                                <li><strong>Solely Responsible:</strong> You are responsible for your possessions on site.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8: Compliance & Consequences -->
+                    <div class="slide">
+                        <div class="slide-content">
+                           <h3>Compliance & Consequences</h3>
+                           <p>Failure to comply with company standards may result in disciplinary action.</p>
+                           <p>This includes, but is not limited to, improper handling of food contact packaging.</p>
+                           <p>Always dispose of waste in designated bins.</p>
+                           <p>Adherence to these rules is essential for maintaining safe food production practices.</p>
+                        </div>
+                        <div class="slide-image">
+                           <img src="images/Dispose-of-waste.png" alt="Employee sorting waste into compost bins">
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Navigation Arrows and Dots -->
+                <button class="slide-nav prev" disabled>❮</button>
+                <button class="slide-nav next">❯</button>
+                <div class="slide-dots"></div>
+            </div>
+        
+            <!-- Quiz for Module 1 -->
+            <div class="quiz-container">
+                <h3>🧠 Quick Knowledge Check</h3>
+                <div class="quiz-question" id="quiz1">
+                    <h4>Where is smoking permitted in the factory?</h4>
+                    <p class="quiz-instruction">Select the correct answer to proceed to the next module.</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, false)">Anywhere outside the building</div>
+                        <div class="quiz-option" onclick="selectOption(this, false)">In offices and rest areas</div>
+                        <div class="quiz-option" onclick="selectOption(this, true)">In the designated smoking area only</div>
+                        <div class="quiz-option" onclick="selectOption(this, false)">Inside production areas</div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Main Page Navigation -->
+            <div class="navigation">
+                <a href="index.html" class="btn btn-warning">← Back to Modules</a>
+                <!-- This button is disabled until the quiz is answered correctly -->
+                <a href="module2.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SLIDESHOW SCRIPT ---
+        function setupSlideshow(moduleId) {
+            const container = document.querySelector(`.slideshow-container[data-module-id='${moduleId}']`);
+            if (!container || container.dataset.initialized === 'true') return;
+
+            const wrapper = container.querySelector('.slides-wrapper');
+            const slides = container.querySelectorAll('.slide');
+            const prevBtn = container.querySelector('.prev');
+            const nextBtn = container.querySelector('.next');
+            const dotsContainer = container.querySelector('.slide-dots');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('.dot');
+
+            function goToSlide(index) {
+                currentIndex = index;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateControls();
+            }
+
+            function updateControls() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1);
+            });
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) goToSlide(currentIndex - 1);
+            });
+            
+            goToSlide(0);
+            container.dataset.initialized = 'true';
+        }
+
+        // --- QUIZ SCRIPT ---
+        function selectOption(optionEl, isCorrect) {
+            const quizQuestionEl = optionEl.closest('.quiz-question');
+            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+            
+            // Prevent re-answering
+            if (correctOption) return;
+
+            if (isCorrect) {
+                optionEl.classList.add('correct');
+                // Enable the 'Next Module' button
+                const nextButton = document.getElementById('complete-module-btn');
+                nextButton.style.pointerEvents = 'auto';
+                nextButton.style.background = ''; // Resets to CSS default
+            } else {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        // --- INITIALIZATION ---
+        // Run scripts once the page content has loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSlideshow(1);
+        });
+    </script>
+</body>
+</html>
