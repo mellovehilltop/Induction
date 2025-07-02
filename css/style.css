@@ -534,3 +534,47 @@ body {
     color: #e0c56e;
 }
 /* --- END DARK THEME STYLES --- */
+
+/* --- NEW LIGHT GREEN THEME FOR MODULE 5 --- */
+.light-green-theme .slide {
+    background: #f0f7f2; /* A very light, minty green background */
+    color: #333;
+}
+
+.light-green-theme .slide-content h3 {
+    color: #006400; /* Dark Green for headings */
+    font-family: 'Arial', sans-serif; /* A cleaner, modern font */
+}
+
+.light-green-theme .slide-content p, 
+.light-green-theme .slide-content li,
+.light-green-theme .info-box h4 {
+    color: #2f4f4f; /* Dark Slate Gray for text - easier to read */
+}
+
+.light-green-theme .info-box {
+    background: #e6f0e9; /* A slightly darker green for info boxes */
+    border-left-color: #2e8b57; /* Sea Green for the accent border */
+}
+
+.light-green-theme .icon-item {
+    background-color: #e6f0e9;
+    border-color: #d1e0d5;
+}
+
+.light-green-theme .icon-item strong {
+    color: #006400;
+}
+
+.light-green-theme .icon-item .icon {
+    color: #2e8b57;
+}
+
+.light-green-theme .slide-dots .dot.active {
+    background: #2e8b57; /* Match the accent color for active dots */
+}
+
+.light-green-theme .slide-nav:hover {
+    background: #2e8b57; /* Match the accent color for nav buttons */
+}
+/* --- END LIGHT GREEN THEME --- */
