@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: PPE & Protective Equipment - Hilltop Honey</title>
+    <!-- Link to your central stylesheet -->
+    <link rel="stylesheet" href="/Induction/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="module2" class="content-area active">
+            <div class="content-header">
+                <h2>🦺 Module 2: PPE & Protective Equipment</h2>
+                <p>Personal Protective Equipment is your shield! Learn how to use it properly to protect yourself and our products.</p>
+            </div>
+        
+            <!-- Slideshow Container for Module 2 -->
+            <div class="slideshow-container" data-module-id="2">
+                <div class="slides-wrapper">
 
+                    <!-- Slide 1: Introduction -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>PPE: Protecting Our Products and You</h3>
+                            <div class="info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-box">
+                                    <h4>Proper Use</h4>
+                                    <p>All PPE, except boots, must be kept off the floor. If contact occurs, discard and replace immediately. Never wear PPE without a hair covering.</p>
+                                </div>
+                                <div class="info-box">
+                                    <h4>Storage</h4>
+                                    <p>Personal lockers are strictly for personal items. Do not store medication, food, or drinks. PPE is company-issued and must not be taken off-site.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-image">
+                            <img src="/Induction/images/ppe-floor.png" alt="PPE being kept off the floor">
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Step 1 - Hairnet -->
+                    <div class="slide">
+                         <div class="slide-image">
+                            <img src="/Induction/images/hairnet.png" alt="A person wearing a blue hairnet">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Step 1: Hairnet</h3>
+                            <p>Put on your hairnet (and beard snood if applicable). You may need two hairnets for longer hair. This must always be the first step.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Step 2 - Boots -->
+                    <div class="slide">
+                        <div class="slide-image">
+                            <img src="/Induction/images/boots.png" alt="A person wearing safety boots">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Step 2: Footwear</h3>
+                            <p>Put on your company-issued hat and boots or safety shoes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Step 3 - Sanitise -->
+                    <div class="slide">
+                         <div class="slide-image">
+                            <img src="/Induction/images/sanitise.png" alt="A person using a hand sanitiser dispenser">
+                        </div>
+                        <div class="slide-content">
+                             <h3>Step 3: Sanitise Hands</h3>
+                             <p>Sanitise your hands thoroughly before touching your clean work coat.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Step 4 - Coat -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>Step 4: Coat</h3>
+                            <p>Put on your coat and fasten all the way up to cover your personal clothing completely.</p>
+                        </div>
+                        <div class="slide-image">
+                           <img src="/Induction/images/coat.png" alt="A person wearing a white work coat">
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Step 5 - Final Hand Wash -->
+                    <div class="slide">
+                        <div class="slide-image">
+                           <img src="/Induction/images/hand-wash.png" alt="A person washing their hands with soap">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Step 5: Final Hand Wash</h3>
+                             <p>After you are fully dressed, wash and disinfect your hands one last time before entering the production area.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7: The Quiz -->
+                    <div class="slide">
+                        <div class="quiz-container" style="width: 100%; background: none; padding: 0; border: none; margin-top:0;">
+                            <h3>🧠 Quick Knowledge Check</h3>
+                            <div class="quiz-question" id="quiz2">
+                                <h4>What should be done if PPE (except boots/safety shoes) comes into contact with the floor?</h4>
+                                <p class="quiz-instruction">Select the correct answer to proceed to the next module.</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Clean and reuse</div>
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Continue using as is</div>
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Store in personal lockers</div>
+                                    <div class="quiz-option" onclick="selectOption(this, true)">Discard and replace immediately</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Navigation Arrows and Dots -->
+                <button class="slide-nav prev" disabled>❮</button>
+                <button class="slide-nav next">❯</button>
+                <div class="slide-dots"></div>
+            </div>
+        
+            <!-- Main Page Navigation -->
+            <div class="navigation">
+                <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
+                <!-- This button is disabled until the quiz is answered correctly -->
+                <a href="/Induction/module3.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SLIDESHOW SCRIPT ---
+        function setupSlideshow(moduleId) {
+            const container = document.querySelector(`.slideshow-container[data-module-id='${moduleId}']`);
+            if (!container || container.dataset.initialized === 'true') return;
+
+            const wrapper = container.querySelector('.slides-wrapper');
+            const slides = container.querySelectorAll('.slide');
+            const prevBtn = container.querySelector('.prev');
+            const nextBtn = container.querySelector('.next');
+            const dotsContainer = container.querySelector('.slide-dots');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('.dot');
+
+            function goToSlide(index) {
+                currentIndex = index;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateControls();
+            }
+
+            function updateControls() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            nextBtn.addEventListener('click', () => { if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1); });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) goToSlide(currentIndex - 1); });
+            
+            goToSlide(0);
+            container.dataset.initialized = 'true';
+        }
+
+        // --- QUIZ SCRIPT ---
+        function selectOption(optionEl, isCorrect) {
+            const quizQuestionEl = optionEl.closest('.quiz-question');
+            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+            
+            if (correctOption) return;
+
+            if (isCorrect) {
+                optionEl.classList.add('correct');
+                const nextButton = document.getElementById('complete-module-btn');
+                nextButton.style.pointerEvents = 'auto';
+                nextButton.style.background = ''; 
+            } else {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSlideshow(2);
+        });
+    </script>
+</body>
+</html>
