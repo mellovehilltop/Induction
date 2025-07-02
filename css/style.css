@@ -502,3 +502,35 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* --- NEW STYLES FOR DARK THEME MODULES --- */
+.dark-theme .slide {
+    background: #1c1c1c; /* Dark background */
+    color: #f0f0f0; /* Light text */
+}
+
+.dark-theme .slide-content h3 {
+    color: #e0c56e; /* Gold color for headings */
+    font-family: serif; /* Use a more elegant font */
+}
+
+.dark-theme .slide-content p, 
+.dark-theme .slide-content li,
+.dark-theme .info-box h4 {
+    color: #e0e0e0; /* Off-white for better readability */
+}
+
+.dark-theme .info-box {
+    background: #2a2a2a; /* Slightly lighter dark for info boxes */
+    border-left-color: #e0c56e; /* Gold accent border */
+}
+
+.dark-theme .icon-item {
+    background-color: #2a2a2a;
+    border-color: #444;
+}
+
+.dark-theme .icon-item strong,
+.dark-theme .icon-item .icon {
+    color: #e0c56e;
+}
+/* --- END DARK THEME STYLES --- */
