@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Environmental Responsibility - Hilltop Honey</title>
+    <link rel="stylesheet" href="/Induction/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="module5" class="content-area active">
+            <div class="content-header">
+                <h2>🌱 Module 5: Environmental Responsibility</h2>
+                <p>Learn how we protect the environment and your crucial role in our sustainability efforts.</p>
+            </div>
+        
+            <!-- Using the dark theme for a fresh look, can be changed -->
+            <div class="slideshow-container dark-theme" data-module-id="5">
+                <div class="slides-wrapper">
+
+                    <!-- Slide 1: Introduction -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>Caring for Our Environment</h3>
+                            <p>At Hilltop, protecting the environment is as important as producing great honey. Your actions, big and small, make a huge difference. This module covers the simple, common-sense ways you can help us be a green and responsible workplace.</p>
+                        </div>
+                        <div class="slide-image">
+                            <!-- Use your new image here -->
+                            <img src="/Induction/images/title.png" alt="A drop of golden honey on a vibrant green leaf">
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Spillages -->
+                    <div class="slide">
+                        <div class="slide-image">
+                            <!-- Use your new image here -->
+                            <img src="/Induction/images/honey-spill.png" alt="Person in gloves cleaning a honey spill on the floor">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Rule #1: Clean Up Spills Immediately</h3>
+                            <div class="info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-box"><h4>Why it Matters</h4><p>Honey spills can attract pests and are a safety hazard. More importantly, honey washed down the drain can seriously harm local rivers and bee populations.</p></div>
+                                <div class="info-box"><h4>What to Do</h4><p>Clean up any spills right away using the provided spill kits. **Never** wash honey or syrup down the drain. Use designated containers for disposal.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Recycling -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h3>Rule #2: Recycle Correctly</h3>
+                             <p>Recycling only works when we do it right! Putting the wrong item in a bin can contaminate the whole batch. Please take a moment to sort your waste correctly.</p>
+                             <ul class="step-list">
+                                 <li><strong>Paper & Cardboard:</strong> In the paper recycling bin.</li>
+                                 <li><strong>Plastic & Glass:</strong> In the mixed recycling bin. Ensure containers are washed first.</li>
+                                 <li><strong>Food Waste:</strong> In the designated compost bin.</li>
+                             </ul>
+                             <p>If you're unsure, ask your manager. It's better to ask than to guess!</p>
+                        </div>
+                        <div class="slide-image">
+                            <!-- Use your new image here -->
+                            <img src="/Induction/images/correct-recycling.png" alt="A person placing a clean glass jar into a recycling bin">
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Reporting Concerns -->
+                    <div class="slide">
+                        <div class="slide-image">
+                           <!-- Use your new image here -->
+                           <img src="/Induction/images/reporting-concern.png" alt="Employee pointing out a concern to a manager">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Rule #3: See Something? Say Something.</h3>
+                            <p>You are our eyes and ears on the factory floor. If you see an environmental risk, we need to know.</p>
+                             <div class="info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-box"><h4>What to Report</h4><p>Report any leaks, large spills, improper waste disposal, or anything else that could harm the environment.</p></div>
+                                <div class="info-box"><h4>Who to Tell</h4><p>Tell your team leader or manager immediately. Your quick action can prevent a small problem from becoming a big one.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: The Quiz -->
+                    <div class="slide">
+                        <div class="quiz-container" style="width: 100%; background: none; padding: 0; border: none; margin-top:0;">
+                            <h3>🧠 Quick Knowledge Check</h3>
+                            <div class="quiz-question" id="quiz5">
+                                <h4>What is the most important rule when dealing with a honey spillage?</h4>
+                                <p class="quiz-instruction">Select the correct answer to proceed to the next module.</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Wipe it up with a paper towel and put it in the general waste.</div>
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Leave it for the cleaning staff to handle at the end of their shift.</div>
+                                    <div class="quiz-option" onclick="selectOption(this, true)">Clean it immediately and never wash it down the drain.</div>
+                                    <div class="quiz-option" onclick="selectOption(this, false)">Pour water on it to dilute it.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <button class="slide-nav prev" disabled>❮</button>
+                <button class="slide-nav next">❯</button>
+                <div class="slide-dots"></div>
+            </div>
+        
+            <div class="navigation">
+                <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
+                <a href="/Induction/module6.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setupSlideshow(moduleId) {
+            const container = document.querySelector(`.slideshow-container[data-module-id='${moduleId}']`);
+            if (!container || container.dataset.initialized === 'true') return;
+            const wrapper = container.querySelector('.slides-wrapper');
+            const slides = container.querySelectorAll('.slide');
+            const prevBtn = container.querySelector('.prev');
+            const nextBtn = container.querySelector('.next');
+            const dotsContainer = container.querySelector('.slide-dots');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('.dot');
+            function goToSlide(index) {
+                currentIndex = index;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateControls();
+            }
+            function updateControls() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            nextBtn.addEventListener('click', () => { if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1); });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) goToSlide(currentIndex - 1); });
+            goToSlide(0);
+            container.dataset.initialized = 'true';
+        }
+        function selectOption(optionEl, isCorrect) {
+            const quizQuestionEl = optionEl.closest('.quiz-question');
+            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+            if (correctOption) return;
+            if (isCorrect) {
+                optionEl.classList.add('correct');
+                const nextButton = document.getElementById('complete-module-btn');
+                nextButton.style.pointerEvents = 'auto';
+                nextButton.style.background = ''; 
+            } else {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSlideshow(5);
+        });
+    </script>
+</body>
+</html>
