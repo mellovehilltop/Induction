@@ -4,32 +4,25 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #f4a261 0%, #e76f51 50%, #e9c46a 100%);
-    min-height: 100vh;
     line-height: 1.6;
+    /* Add these two lines to make the body a flexible container */
+    display: flex;
+    justify-content: center;
 }
 
 .container {
     max-width: 1200px;
+    width: 100%; /* Make it take up available width */
     margin: 0 auto;
     padding: 20px;
-}
-
-.header {
-    text-align: center;
-    color: white;
-    margin-bottom: 30px;
-}
-
-.logo-container {
+    /* Add this to allow the container to center itself */
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    min-height: 100vh; /* Make it at least the height of the viewport */
 }
 
 .hilltop-logo {
@@ -361,7 +354,7 @@ body {
 }
 
 .slide {
-    min-height: 450px;
+    min-height: 55vh; /* Use viewport height instead of fixed pixels */
     flex: 0 0 100%;
     padding: 30px 40px;
     display: flex;
