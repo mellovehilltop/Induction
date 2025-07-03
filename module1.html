@@ -255,8 +255,17 @@ function markModuleAsComplete(moduleId) {
     // Save the updated list back to storage
     localStorage.setItem('completedModules', JSON.stringify(completed));
     
-    // Navigate back to the main menu
-    window.location.href = '/Induction/index.html';
+    // --- THIS IS THE NEW, SMARTER LOGIC ---
+    const totalModules = 7; // Define the total number of modules
+
+    if (moduleId < totalModules) {
+        // If this is NOT the last module, go to the next one
+        const nextModuleId = moduleId + 1;
+        window.location.href = `/Induction/module${nextModuleId}.html`;
+    } else {
+        // If this IS the last module, go back to the main menu
+        window.location.href = '/Induction/index.html';
+    }
 }
         
         document.addEventListener('DOMContentLoaded', function() {
