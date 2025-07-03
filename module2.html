@@ -6,6 +6,206 @@
     <title>Module 2: PPE & Protective Equipment - Hilltop Honey</title>
     <!-- Link to your central stylesheet -->
     <link rel="stylesheet" href="/Induction/css/style.css">
+    <style>
+        /* Additional styles for the drag-and-drop game */
+        .drag-drop-game {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .game-instructions {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .game-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .drag-items-container, .drop-zone-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        .drag-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .drag-item {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .drag-item:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .drag-item.dragging {
+            opacity: 0.5;
+            transform: rotate(3deg);
+        }
+
+        .drag-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .drag-item-text {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .drop-zones {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .drop-slot {
+            min-height: 70px;
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            background: #fff;
+        }
+
+        .drop-slot.drag-over {
+            border-color: #28a745;
+            background: #f8fff9;
+        }
+
+        .drop-slot.filled {
+            border-style: solid;
+            border-color: #6c757d;
+        }
+
+        .drop-slot.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .drop-slot.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            background: #007bff;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .empty-text {
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
+        .game-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .game-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+
+        .game-btn:hover {
+            background: #0056b3;
+        }
+
+        .game-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        @media (max-width: 768px) {
+            .game-area {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .drag-item img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .drag-item-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -94,19 +294,76 @@
                         </div>
                     </div>
 
-                    <!-- Slide 7: The Quiz -->
+                    <!-- Slide 7: The Drag & Drop Game -->
                     <div class="slide">
-                        <div class="quiz-container" style="width: 100%; background: none; padding: 0; border: none; margin-top:0;">
-                            <h3>🧠 Quick Knowledge Check</h3>
-                            <div class="quiz-question" id="quiz2">
-                                <h4>What should be done if PPE (except boots/safety shoes) comes into contact with the floor?</h4>
-                                <p class="quiz-instruction">Select the correct answer to proceed to the next module.</p>
-                                <div class="quiz-options">
-                                    <div class="quiz-option" onclick="selectOption(this, false)">Clean and reuse</div>
-                                    <div class="quiz-option" onclick="selectOption(this, false)">Continue using as is</div>
-                                    <div class="quiz-option" onclick="selectOption(this, false)">Store in personal lockers</div>
-                                    <div class="quiz-option" onclick="selectOption(this, true)">Discard and replace immediately</div>
+                        <div class="drag-drop-game">
+                            <h3>🧠 PPE Sequence Challenge</h3>
+                            <div class="game-instructions">
+                                <p>Drag each step into the correct order to complete your PPE training!</p>
+                            </div>
+                            
+                            <div class="game-area">
+                                <div class="drag-items-container">
+                                    <div class="section-title">PPE Steps</div>
+                                    <div class="drag-items" id="dragItems">
+                                        <div class="drag-item" draggable="true" data-step="5">
+                                            <img src="/Induction/images/hand-wash.png" alt="Hand washing">
+                                            <div class="drag-item-text">Final hand wash and disinfect</div>
+                                        </div>
+                                        <div class="drag-item" draggable="true" data-step="3">
+                                            <img src="/Induction/images/sanitise.png" alt="Hand sanitiser">
+                                            <div class="drag-item-text">Sanitise hands thoroughly</div>
+                                        </div>
+                                        <div class="drag-item" draggable="true" data-step="1">
+                                            <img src="/Induction/images/hairnet.png" alt="Hairnet">
+                                            <div class="drag-item-text">Put on hairnet (and beard snood)</div>
+                                        </div>
+                                        <div class="drag-item" draggable="true" data-step="4">
+                                            <img src="/Induction/images/coat.png" alt="Work coat">
+                                            <div class="drag-item-text">Put on coat and fasten up</div>
+                                        </div>
+                                        <div class="drag-item" draggable="true" data-step="2">
+                                            <img src="/Induction/images/boots.png" alt="Safety boots">
+                                            <div class="drag-item-text">Put on hat and boots/safety shoes</div>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div class="drop-zone-container">
+                                    <div class="section-title">Correct Order</div>
+                                    <div class="drop-zones" id="dropZones">
+                                        <div class="drop-slot" data-position="1">
+                                            <div class="step-number">1</div>
+                                            <div class="empty-text">Drop first step here</div>
+                                        </div>
+                                        <div class="drop-slot" data-position="2">
+                                            <div class="step-number">2</div>
+                                            <div class="empty-text">Drop second step here</div>
+                                        </div>
+                                        <div class="drop-slot" data-position="3">
+                                            <div class="step-number">3</div>
+                                            <div class="empty-text">Drop third step here</div>
+                                        </div>
+                                        <div class="drop-slot" data-position="4">
+                                            <div class="step-number">4</div>
+                                            <div class="empty-text">Drop fourth step here</div>
+                                        </div>
+                                        <div class="drop-slot" data-position="5">
+                                            <div class="step-number">5</div>
+                                            <div class="empty-text">Drop fifth step here</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="game-buttons">
+                                <button class="game-btn" onclick="checkAnswers()">Check My Answer</button>
+                                <button class="game-btn" onclick="resetGame()">Try Again</button>
+                            </div>
+
+                            <div class="success-message" id="successMessage">
+                                <h4>🎉 Perfect!</h4>
+                                <p>You've got the PPE sequence right! You're ready to move to the next module.</p>
                             </div>
                         </div>
                     </div>
@@ -122,13 +379,16 @@
             <!-- Main Page Navigation -->
             <div class="navigation">
                 <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
-                <!-- This button is disabled until the quiz is answered correctly -->
+                <!-- This button is disabled until the game is completed -->
                 <a href="/Induction/module3.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
             </div>
         </div>
     </div>
 
     <script>
+        let draggedElement = null;
+        let gameCompleted = false;
+
         // --- SLIDESHOW SCRIPT ---
         function setupSlideshow(moduleId) {
             const container = document.querySelector(`.slideshow-container[data-module-id='${moduleId}']`);
@@ -155,6 +415,11 @@
                 currentIndex = index;
                 wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
                 updateControls();
+                
+                // Setup drag and drop when reaching the game slide
+                if (currentIndex === totalSlides - 1) {
+                    setTimeout(setupDragAndDrop, 100);
+                }
             }
 
             function updateControls() {
@@ -172,21 +437,159 @@
             container.dataset.initialized = 'true';
         }
 
-        // --- QUIZ SCRIPT ---
-        function selectOption(optionEl, isCorrect) {
-            const quizQuestionEl = optionEl.closest('.quiz-question');
-            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
-            
-            if (correctOption) return;
+        // --- DRAG AND DROP GAME SCRIPT ---
+        function setupDragAndDrop() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropSlots = document.querySelectorAll('.drop-slot');
 
-            if (isCorrect) {
-                optionEl.classList.add('correct');
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+
+            dropSlots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+                slot.addEventListener('dragenter', handleDragEnter);
+                slot.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            if (!this.classList.contains('filled')) {
+                this.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+
+            if (draggedElement && !this.classList.contains('filled')) {
+                this.innerHTML = '';
+                
+                const stepNumber = document.createElement('div');
+                stepNumber.className = 'step-number';
+                stepNumber.textContent = this.dataset.position;
+                this.appendChild(stepNumber);
+
+                const clonedElement = draggedElement.cloneNode(true);
+                clonedElement.draggable = false;
+                clonedElement.style.cursor = 'default';
+                clonedElement.classList.remove('dragging');
+                
+                this.appendChild(clonedElement);
+                this.classList.add('filled');
+
+                draggedElement.remove();
+                setupDragAndDrop();
+            }
+        }
+
+        function checkAnswers() {
+            const dropSlots = document.querySelectorAll('.drop-slot');
+            let correct = true;
+            let allFilled = true;
+
+            dropSlots.forEach(slot => {
+                const dragItem = slot.querySelector('.drag-item');
+                if (!dragItem) {
+                    allFilled = false;
+                    return;
+                }
+
+                const expectedStep = slot.dataset.position;
+                const actualStep = dragItem.dataset.step;
+
+                slot.classList.remove('correct', 'incorrect');
+                
+                if (expectedStep === actualStep) {
+                    slot.classList.add('correct');
+                } else {
+                    slot.classList.add('incorrect');
+                    correct = false;
+                }
+            });
+
+            if (!allFilled) {
+                alert('Please place all steps in order before checking your answer!');
+                return;
+            }
+
+            if (correct) {
+                document.getElementById('successMessage').style.display = 'block';
+                gameCompleted = true;
                 const nextButton = document.getElementById('complete-module-btn');
                 nextButton.style.pointerEvents = 'auto';
                 nextButton.style.background = ''; 
             } else {
-                optionEl.classList.add('incorrect');
+                alert('Not quite right! Remember: Hairnet first, then boots, sanitise, coat, final wash!');
             }
+        }
+
+        function resetGame() {
+            const dropSlots = document.querySelectorAll('.drop-slot');
+            dropSlots.forEach((slot, index) => {
+                slot.className = 'drop-slot';
+                slot.innerHTML = `
+                    <div class="step-number">${index + 1}</div>
+                    <div class="empty-text">Drop ${getOrdinal(index + 1)} step here</div>
+                `;
+            });
+
+            const dragItemsContainer = document.getElementById('dragItems');
+            dragItemsContainer.innerHTML = `
+                <div class="drag-item" draggable="true" data-step="5">
+                    <img src="/Induction/images/hand-wash.png" alt="Hand washing">
+                    <div class="drag-item-text">Final hand wash and disinfect</div>
+                </div>
+                <div class="drag-item" draggable="true" data-step="3">
+                    <img src="/Induction/images/sanitise.png" alt="Hand sanitiser">
+                    <div class="drag-item-text">Sanitise hands thoroughly</div>
+                </div>
+                <div class="drag-item" draggable="true" data-step="1">
+                    <img src="/Induction/images/hairnet.png" alt="Hairnet">
+                    <div class="drag-item-text">Put on hairnet (and beard snood)</div>
+                </div>
+                <div class="drag-item" draggable="true" data-step="4">
+                    <img src="/Induction/images/coat.png" alt="Work coat">
+                    <div class="drag-item-text">Put on coat and fasten up</div>
+                </div>
+                <div class="drag-item" draggable="true" data-step="2">
+                    <img src="/Induction/images/boots.png" alt="Safety boots">
+                    <div class="drag-item-text">Put on hat and boots/safety shoes</div>
+                </div>
+            `;
+
+            document.getElementById('successMessage').style.display = 'none';
+            gameCompleted = false;
+            setupDragAndDrop();
+        }
+
+        function getOrdinal(num) {
+            const ordinals = ['', 'first', 'second', 'third', 'fourth', 'fifth'];
+            return ordinals[num] || num + 'th';
         }
         
         // --- INITIALIZATION ---
