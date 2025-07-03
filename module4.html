@@ -158,10 +158,12 @@
                 <div class="slide-dots"></div>
             </div>
         
-            <div class="navigation">
-                <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
-                <a href="/Induction/module5.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
-            </div>
+ <!-- NEW NAVIGATION -->
+<div class="navigation">
+    <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
+    <!-- This button now calls a JS function when clicked -->
+    <button id="complete-module-btn" class="btn btn-success" onclick="markModuleAsComplete(4)" disabled>Next Module</button>
+</div>
         </div>
     </div>
 
@@ -201,19 +203,39 @@
             goToSlide(0);
             container.dataset.initialized = 'true';
         }
-        function selectOption(optionEl, isCorrect) {
-            const quizQuestionEl = optionEl.closest('.quiz-question');
-            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
-            if (correctOption) return;
-            if (isCorrect) {
-                optionEl.classList.add('correct');
-                const nextButton = document.getElementById('complete-module-btn');
-                nextButton.style.pointerEvents = 'auto';
-                nextButton.style.background = ''; 
-            } else {
-                optionEl.classList.add('incorrect');
-            }
-        }
+// REPLACE the old selectOption function with these TWO new ones
+
+function selectOption(optionEl, isCorrect) {
+    const quizQuestionEl = optionEl.closest('.quiz-question');
+    const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+    if (correctOption) return;
+
+    if (isCorrect) {
+        optionEl.classList.add('correct');
+        const nextButton = document.getElementById('complete-module-btn');
+        // The button is now enabled, not the link
+        nextButton.disabled = false;
+        nextButton.style.background = ''; 
+    } else {
+        optionEl.classList.add('incorrect');
+    }
+}
+
+function markModuleAsComplete(moduleId) {
+    // Get existing completed modules from storage, or create a new empty array
+    let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+    
+    // Add the current module to the list if it's not already there
+    if (!completed.includes(moduleId)) {
+        completed.push(moduleId);
+    }
+    
+    // Save the updated list back to storage
+    localStorage.setItem('completedModules', JSON.stringify(completed));
+    
+    // Navigate back to the main menu
+    window.location.href = '/Induction/index.html';
+}
         document.addEventListener('DOMContentLoaded', function() {
             setupSlideshow(4);
         });
