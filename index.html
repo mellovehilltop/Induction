@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hilltop Honey - Interactive Induction Training</title>
     <!-- Link to your central stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/Induction/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -20,7 +20,6 @@
         </div>
 
         <div class="progress-container">
-            <!-- This is a visual placeholder. Tracking progress across multiple pages requires more advanced JavaScript (using localStorage), which can be added later. -->
             <div class="progress-bar" style="width:0%;">0% Complete</div>
         </div>
 
@@ -36,7 +35,7 @@
             </a>
 
             <!-- Module 2 Card -->
-            <a href="module2.html" class="module-card">
+            <a href="/Induction/module2.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #f4a261);">🦺</div>
                 <h3>PPE & Protective Equipment</h3>
                 <p>Master the correct use of personal protective equipment and understand why it's crucial.</p>
@@ -44,45 +43,126 @@
             </a>
 
             <!-- Module 3 Card -->
-            <a href="module3.html" class="module-card">
-                <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">🧼</div>
-                <h3>Hygiene & Food Safety</h3>
-                <p>Essential hygiene practices and food safety protocols to protect our products and customers.</p>
+            <a href="/Induction/module3.html" class="module-card">
+                <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">🔩</div>
+                <h3>Foreign Body Control</h3>
+                <p>Essential guidelines for preventing contamination in our production and warehouse areas.</p>
                 <div class="duration">📅 9 minutes</div>
             </a>
 
             <!-- Module 4 Card -->
-            <a href="module4.html" class="module-card">
+            <a href="/Induction/module4.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #e76f51, #f4a261);">🔒</div>
-                <h3>Security & Site Access</h3>
+                <h3>Security and Safety</h3>
                 <p>Understand our security measures, CCTV policies, and how to maintain a secure workplace.</p>
                 <div class="duration">📅 8 minutes</div>
             </a>
 
             <!-- Module 5 Card -->
-            <a href="module5.html" class="module-card">
-                <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #e76f51);">🌱</div>
+            <a href="/Induction/module5.html" class="module-card">
+                <div class="module-icon" style="background: linear-gradient(135deg, #2e8b57, #3cb371);">🌱</div>
                 <h3>Environmental Responsibility</h3>
                 <p>Learn how we protect the environment and your role in our sustainability efforts.</p>
                 <div class="duration">📅 8 minutes</div>
             </a>
             
             <!-- Module 6 Card -->
-            <a href="module6.html" class="module-card">
+            <a href="/Induction/module6.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">📋</div>
                 <h3>Health Reporting & Legal</h3>
                 <p>Important health reporting requirements and legal obligations for food handlers.</p>
                 <div class="duration">📅 7 minutes</div>
             </a>
-        <!-- NEW Module 7 Card -->
+            
+            <!-- Module 7 Card -->
             <a href="/Induction/module7.html" class="module-card">
-                <div class="module-icon" style="background: linear-gradient(135deg, #4a90e2, #50e3c2);"> whistleblower</div>
+                <div class="module-icon" style="background: linear-gradient(135deg, #4a90e2, #50e3c2);">📣</div>
                 <h3>Confidential Reporting</h3>
                 <p>Understand how to safely and confidentially report concerns about safety, quality, and legality.</p>
                 <div class="duration">📅 5 minutes</div>
             </a>
-
         </div>
+
+        <!-- COMPLETION / FINAL TEST SCREEN (hidden by default) -->
+        <div id="completion-screen" class="content-area" style="display: none; text-align: center;">
+             <div style="padding: 40px;">
+                <h1 style="color: #28a745; font-size: 3rem;">🎉 Well Done!</h1>
+                <h2 style="color: #333; margin: 20px 0;">You've Successfully Completed All Modules</h2>
+                
+                <div style="background: linear-gradient(135deg, #d4edda, #c3e6cb); border-radius: 15px; padding: 25px; margin: 30px 0; border: 3px solid #28a745;">
+                    <h3 style="color: #333;">📝 Final Assessment Required</h3>
+                    <p style="font-size: 1.1rem; color: #666; margin: 15px 0;">
+                        Click the button below to open the Microsoft Form and complete your final assessment. You must pass to receive your certification.
+                    </p>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=kwUl-gL0HEmwt61NYzBnUmEnHjTZ8XFAti5gOD7EzBVUMk9ZNERUQkZLU0hRMkdBVlNURkJGNkJKUC4u" 
+                       target="_blank" 
+                       class="btn btn-primary"
+                       style="font-size: 1.2rem; padding: 15px 30px; margin-top: 15px;">
+                        🚀 Take Final Assessment
+                    </a>
+                </div>
+                 <button onclick="resetProgress()" class="btn btn-warning">Reset Progress</button>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        // This script runs every time the main menu page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalModules = 7;
+            const moduleGrid = document.getElementById('moduleOverview');
+            const completionScreen = document.getElementById('completion-screen');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            // Get completed modules from storage
+            let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+    
+            // Update the progress bar
+            const progressPercent = (completed.length / totalModules) * 100;
+            progressBar.style.width = progressPercent + '%';
+            progressBar.textContent = Math.round(progressPercent) + '% Complete';
+    
+            // Update the visual style of each module card
+            const moduleCards = document.querySelectorAll('.module-card');
+            moduleCards.forEach((card, index) => {
+                const moduleNum = index + 1;
+                // Find the corresponding module number from the href
+                const cardModuleNum = parseInt(card.href.match(/module(\d+)\.html/)[1]);
+
+                if (completed.includes(cardModuleNum)) {
+                    // Style for completed cards
+                    card.style.borderLeft = '5px solid #28a745';
+                    card.style.opacity = '0.7';
+
+                    // Optional: Add a checkmark icon to the completed card
+                    const checkmark = document.createElement('span');
+                    checkmark.innerHTML = '✔';
+                    checkmark.style.position = 'absolute';
+                    checkmark.style.top = '15px';
+                    checkmark.style.right = '15px';
+                    checkmark.style.color = '#28a745';
+                    checkmark.style.fontSize = '1.5rem';
+                    checkmark.style.fontWeight = 'bold';
+                    card.appendChild(checkmark);
+                }
+            });
+    
+            // Check if all modules are complete
+            if (completed.length >= totalModules) {
+                // Hide the module grid and show the final test screen
+                moduleGrid.style.display = 'none';
+                completionScreen.style.display = 'block';
+                progressBar.style.width = '100%';
+                progressBar.textContent = '100% Complete';
+            }
+        });
+    
+        // A helper function to reset progress for testing
+        function resetProgress() {
+            localStorage.removeItem('completedModules');
+            window.location.reload();
+        }
+    </script>
 </body>
 </html>
