@@ -376,12 +376,11 @@
                 <div class="slide-dots"></div>
             </div>
         
-            <!-- Main Page Navigation -->
-            <div class="navigation">
-                <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
-                <!-- This button is disabled until the game is completed -->
-                <a href="/Induction/module3.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
-            </div>
+           <div class="navigation">
+    <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
+    <!-- This button now calls a JS function when clicked -->
+    <button id="complete-module-btn" class="btn btn-success" onclick="markModuleAsComplete(2)" disabled>Next Module</button>
+</div>
         </div>
     </div>
 
