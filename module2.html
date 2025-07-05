@@ -429,11 +429,11 @@
 
         // --- NEW: markModuleAsComplete FUNCTION ---
         function markModuleAsComplete(moduleId) {
-            let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+            let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
             if (!completed.includes(moduleId)) {
                 completed.push(moduleId);
             }
-            localStorage.setItem('completedModules', JSON.stringify(completed));
+            sessionStorage.setItem('completedModules', JSON.stringify(completed));
             
             const totalModules = 7;
             if (moduleId < totalModules) {
