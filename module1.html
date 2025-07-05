@@ -245,7 +245,7 @@ function selectOption(optionEl, isCorrect) {
 
 function markModuleAsComplete(moduleId) {
     // Get existing completed modules from storage, or create a new empty array
-    let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+    let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
     
     // Add the current module to the list if it's not already there
     if (!completed.includes(moduleId)) {
@@ -253,7 +253,7 @@ function markModuleAsComplete(moduleId) {
     }
     
     // Save the updated list back to storage
-    localStorage.setItem('completedModules', JSON.stringify(completed));
+    sessionStorage.setItem('completedModules', JSON.stringify(completed));
     
     // --- THIS IS THE NEW, SMARTER LOGIC ---
     const totalModules = 7; // Define the total number of modules
