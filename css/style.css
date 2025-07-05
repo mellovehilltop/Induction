@@ -9,20 +9,21 @@ body {
     background: linear-gradient(135deg, #f4a261 0%, #e76f51 50%, #e9c46a 100%);
     line-height: 1.6;
     
-    /* NEW: Use CSS Grid for perfect centering */
-    display: grid;
-    place-items: center; /* This centers the .container both vertically and horizontally */
-    min-height: 100vh; /* Ensures the grid takes up at least the full screen height */
-    margin: 0; /* Remove default body margin */
-    padding: 20px 0; /* Add some vertical space for breathing room */
+    /* NEW: Use Flexbox for robust centering */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center;/* Center vertically */
+    min-height: 100vh;      /* Body must be at least full screen height */
+    padding: 20px;          /* Add padding around the edges */
+    margin: 0;              /* Reset default body margin */
 }
 
 .container {
     max-width: 1200px;
     width: 100%;
-    /* The container no longer needs margin: auto or flex properties,
-       as the body's grid layout is handling all the positioning. */
-    padding: 20px;
+    /* No special centering styles needed here anymore */
+    padding: 0; /* Padding is now on the body */
 }
 
 .hilltop-logo {
