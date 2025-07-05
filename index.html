@@ -10,9 +10,8 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <div class="hilltop-logo">
-                    <span class="beehive-icon">🍯</span>HILLTOP
-                </div>
+                <!-- The old logo div is replaced with a simple image tag -->
+                <img src="/Induction/images/hilltop-logo.png" alt="Hilltop Honey Logo" style="max-width: 350px; margin-bottom: 20px;">
             </div>
             <h1>Welcome to Hilltop Honey</h1>
             <p>Interactive Induction Training - Your journey to becoming a certified food handler starts here!</p>
@@ -73,7 +72,6 @@
             </a>
         </div>
 
-        <!-- ADDED BACK IN: COMPLETION / FINAL TEST SCREEN (hidden by default) -->
         <div id="completion-screen" class="content-area" style="display: none; text-align: center;">
              <div style="padding: 40px;">
                 <h1 style="color: #28a745; font-size: 3rem;">🎉 Well Done!</h1>
@@ -97,7 +95,6 @@
 
     </div>
 
-    <!-- UPDATED SCRIPT USING sessionStorage -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const totalModules = 7;
@@ -105,7 +102,6 @@
             const completionScreen = document.getElementById('completion-screen');
             const progressBar = document.querySelector('.progress-bar');
             
-            // Using sessionStorage now
             let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
     
             const progressPercent = (completed.length / totalModules) * 100;
@@ -144,7 +140,6 @@
         });
     
         function resetProgress() {
-            // Using sessionStorage now
             sessionStorage.removeItem('completedModules');
             window.location.reload();
         }
