@@ -8,21 +8,21 @@ body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #f4a261 0%, #e76f51 50%, #e9c46a 100%);
     line-height: 1.6;
-    /* Add these two lines to make the body a flexible container */
+    /* This makes the body a flex container */
     display: flex;
     justify-content: center;
+    align-items: center; /* This vertically centers the content */
+    min-height: 100vh;  /* Ensures body is at least the full screen height */
+    padding: 20px 0; /* Adds some space top and bottom */
 }
 
 .container {
     max-width: 1200px;
-    width: 100%; /* Make it take up available width */
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
-    /* Add this to allow the container to center itself */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh; /* Make it at least the height of the viewport */
+    /* The container itself no longer needs flex properties,
+       as the body is now handling the centering. */
 }
 
 .hilltop-logo {
