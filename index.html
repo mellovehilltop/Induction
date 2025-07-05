@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hilltop Honey - Interactive Induction Training</title>
-    <!-- Link to your central stylesheet -->
     <link rel="stylesheet" href="/Induction/css/style.css">
 </head>
 <body>
@@ -23,67 +22,58 @@
             <div class="progress-bar" style="width:0%;">0% Complete</div>
         </div>
 
-        <!-- The module grid uses standard links to navigate to each module's HTML page -->
         <div id="moduleOverview" class="module-grid">
-            
             <!-- Module 1 Card -->
             <a href="/Induction/module1.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e76f51);">⚖️</div>
                 <h3>Factory Rules & Safety</h3>
-                <p>Learn about our essential rules, legal requirements, and safety protocols to keep everyone safe.</p>
-                <div class="duration">📅 10 minutes</div>
+                <p>Learn about our essential rules, legal requirements, and safety protocols.</p>
             </a>
 
             <!-- Module 2 Card -->
             <a href="/Induction/module2.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #e9c46a, #f4a261);">🦺</div>
                 <h3>PPE & Protective Equipment</h3>
-                <p>Master the correct use of personal protective equipment and understand why it's crucial.</p>
-                <div class="duration">📅 7 minutes</div>
+                <p>Master the correct use of personal protective equipment.</p>
             </a>
 
             <!-- Module 3 Card -->
             <a href="/Induction/module3.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">🔩</div>
                 <h3>Foreign Body Control</h3>
-                <p>Essential guidelines for preventing contamination in our production and warehouse areas.</p>
-                <div class="duration">📅 9 minutes</div>
+                <p>Essential guidelines for preventing contamination.</p>
             </a>
 
             <!-- Module 4 Card -->
             <a href="/Induction/module4.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #e76f51, #f4a261);">🔒</div>
                 <h3>Security and Safety</h3>
-                <p>Understand our security measures, CCTV policies, and how to maintain a secure workplace.</p>
-                <div class="duration">📅 8 minutes</div>
+                <p>Understand our security measures and CCTV policies.</p>
             </a>
 
             <!-- Module 5 Card -->
             <a href="/Induction/module5.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #2e8b57, #3cb371);">🌱</div>
                 <h3>Environmental Responsibility</h3>
-                <p>Learn how we protect the environment and your role in our sustainability efforts.</p>
-                <div class="duration">📅 8 minutes</div>
+                <p>Learn your role in our sustainability efforts.</p>
             </a>
             
             <!-- Module 6 Card -->
             <a href="/Induction/module6.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #f4a261, #e9c46a);">📋</div>
                 <h3>Health Reporting & Legal</h3>
-                <p>Important health reporting requirements and legal obligations for food handlers.</p>
-                <div class="duration">📅 7 minutes</div>
+                <p>Important health reporting requirements for food handlers.</p>
             </a>
             
             <!-- Module 7 Card -->
             <a href="/Induction/module7.html" class="module-card">
                 <div class="module-icon" style="background: linear-gradient(135deg, #4a90e2, #50e3c2);">📣</div>
                 <h3>Confidential Reporting</h3>
-                <p>Understand how to safely and confidentially report concerns about safety, quality, and legality.</p>
-                <div class="duration">📅 5 minutes</div>
+                <p>How to safely and confidentially report concerns.</p>
             </a>
         </div>
 
-        <!-- COMPLETION / FINAL TEST SCREEN (hidden by default) -->
+        <!-- ADDED BACK IN: COMPLETION / FINAL TEST SCREEN (hidden by default) -->
         <div id="completion-screen" class="content-area" style="display: none; text-align: center;">
              <div style="padding: 40px;">
                 <h1 style="color: #28a745; font-size: 3rem;">🎉 Well Done!</h1>
@@ -101,41 +91,38 @@
                         🚀 Take Final Assessment
                     </a>
                 </div>
-                 <button onclick="resetProgress()" class="btn btn-warning">Reset Progress</button>
+                 <button onclick="resetProgress()" class="btn btn-warning">Reset Progress for Next User</button>
             </div>
         </div>
 
     </div>
 
+    <!-- UPDATED SCRIPT USING sessionStorage -->
     <script>
-        // This script runs every time the main menu page loads
         document.addEventListener('DOMContentLoaded', function() {
             const totalModules = 7;
             const moduleGrid = document.getElementById('moduleOverview');
             const completionScreen = document.getElementById('completion-screen');
             const progressBar = document.querySelector('.progress-bar');
             
-            // Get completed modules from storage
-            let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+            // Using sessionStorage now
+            let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
     
-            // Update the progress bar
             const progressPercent = (completed.length / totalModules) * 100;
             progressBar.style.width = progressPercent + '%';
             progressBar.textContent = Math.round(progressPercent) + '% Complete';
     
-            // Update the visual style of each module card
             const moduleCards = document.querySelectorAll('.module-card');
-            moduleCards.forEach((card, index) => {
-                const moduleNum = index + 1;
-                // Find the corresponding module number from the href
-                const cardModuleNum = parseInt(card.href.match(/module(\d+)\.html/)[1]);
+            moduleCards.forEach((card) => {
+                const cardModuleNumMatch = card.href.match(/module(\d+)\.html/);
+                if (!cardModuleNumMatch) return;
+                
+                const cardModuleNum = parseInt(cardModuleNumMatch[1]);
 
                 if (completed.includes(cardModuleNum)) {
-                    // Style for completed cards
                     card.style.borderLeft = '5px solid #28a745';
                     card.style.opacity = '0.7';
 
-                    // Optional: Add a checkmark icon to the completed card
                     const checkmark = document.createElement('span');
                     checkmark.innerHTML = '✔';
                     checkmark.style.position = 'absolute';
@@ -148,9 +135,7 @@
                 }
             });
     
-            // Check if all modules are complete
             if (completed.length >= totalModules) {
-                // Hide the module grid and show the final test screen
                 moduleGrid.style.display = 'none';
                 completionScreen.style.display = 'block';
                 progressBar.style.width = '100%';
@@ -158,8 +143,8 @@
             }
         });
     
-        // A helper function to reset progress for testing
         function resetProgress() {
+            // Using sessionStorage now
             sessionStorage.removeItem('completedModules');
             window.location.reload();
         }
