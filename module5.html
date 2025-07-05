@@ -14,7 +14,6 @@
                 <p>Learn how we protect the environment and your crucial role in our sustainability efforts.</p>
             </div>
         
-            <!-- Changed to the new 'light-green-theme' class -->
             <div class="slideshow-container light-green-theme" data-module-id="5">
                 <div class="slides-wrapper">
 
@@ -25,14 +24,16 @@
                             <p>At Hilltop, protecting the environment is as important as producing great honey. Your actions, big and small, make a huge difference. This module covers the simple, common-sense ways you can help us be a green and responsible workplace.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="/Induction/images/green-leaf-honey.png" alt="A drop of golden honey on a vibrant green leaf">
+                            <!-- CORRECTED FILENAME -->
+                            <img src="/Induction/images/Title.png" alt="A drop of golden honey on a vibrant green leaf">
                         </div>
                     </div>
 
                     <!-- Slide 2: Spillages -->
                     <div class="slide">
                         <div class="slide-image">
-                            <img src="/Induction/images/cleaning-honey-spill.png" alt="Person in gloves cleaning a honey spill on the floor">
+                             <!-- CORRECTED FILENAME -->
+                            <img src="/Induction/images/honey-spill.png" alt="Person in gloves cleaning a honey spill on the floor">
                         </div>
                         <div class="slide-content">
                             <h3>Rule #1: Clean Up Spills Immediately</h3>
@@ -99,14 +100,17 @@
                 <div class="slide-dots"></div>
             </div>
         
+            <!-- UPDATED NAVIGATION -->
             <div class="navigation">
                 <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
-                <a href="/Induction/module6.html" id="complete-module-btn" class="btn btn-success" style="pointer-events: none; background: #ccc;">Next Module →</a>
+                <button id="complete-module-btn" class="btn btn-success" onclick="markModuleAsComplete(5)" disabled>Next Module</button>
             </div>
         </div>
     </div>
 
+    <!-- UPDATED SCRIPT -->
     <script>
+        // Slideshow setup function (no changes needed here)
         function setupSlideshow(moduleId) {
             const container = document.querySelector(`.slideshow-container[data-module-id='${moduleId}']`);
             if (!container || container.dataset.initialized === 'true') return;
@@ -142,19 +146,45 @@
             goToSlide(0);
             container.dataset.initialized = 'true';
         }
+
+        // Quiz answer function (UPDATED)
         function selectOption(optionEl, isCorrect) {
             const quizQuestionEl = optionEl.closest('.quiz-question');
             const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
             if (correctOption) return;
+
             if (isCorrect) {
                 optionEl.classList.add('correct');
                 const nextButton = document.getElementById('complete-module-btn');
-                nextButton.style.pointerEvents = 'auto';
+                nextButton.disabled = false; // Enable the button
                 nextButton.style.background = ''; 
             } else {
                 optionEl.classList.add('incorrect');
             }
         }
+
+        // Module completion function (UPDATED)
+        function markModuleAsComplete(moduleId) {
+            // Using sessionStorage for non-persistent tracking
+            let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
+            
+            if (!completed.includes(moduleId)) {
+                completed.push(moduleId);
+            }
+            
+            sessionStorage.setItem('completedModules', JSON.stringify(completed));
+            
+            const totalModules = 7; 
+
+            if (moduleId < totalModules) {
+                const nextModuleId = moduleId + 1;
+                window.location.href = `/Induction/module${nextModuleId}.html`;
+            } else {
+                window.location.href = '/Induction/index.html';
+            }
+        }
+        
+        // Initialization
         document.addEventListener('DOMContentLoaded', function() {
             setupSlideshow(5);
         });
