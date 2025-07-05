@@ -1,344 +1,31 @@
-/* --- ORIGINAL STYLES FOR MAIN MENU & GLOBAL LAYOUT --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Replace the body styles with this: */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #f4a261 0%, #e76f51 50%, #e9c46a 100%);
     line-height: 1.6;
     
-    /* NEW: Use Flexbox for robust centering */
+    /* Changed: Remove vertical centering for better content flow */
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;    /* Center horizontally */
-    justify-content: center;/* Center vertically */
-    min-height: 100vh;      /* Body must be at least full screen height */
-    padding: 20px;          /* Add padding around the edges */
-    margin: 0;              /* Reset default body margin */
-}
-
-.container {
-    max-width: 1200px;
-    width: 100%;
-    /* No special centering styles needed here anymore */
-    padding: 0; /* Padding is now on the body */
-}
-
-.hilltop-logo {
-    background: white;
-    color: #333;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 1.8rem;
-    margin: 0 15px 10px 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    letter-spacing: 2px;
-    position: relative;
-}
-
-.beehive-icon {
-    font-size: 2rem;
-    margin-right: 10px;
-    color: #f4a261;
-}
-
-.header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-.progress-container {
-    background: rgba(255,255,255,0.2);
-    border-radius: 25px;
-    padding: 5px;
-    margin-bottom: 30px;
-}
-
-.progress-bar {
-    height: 30px;
-    background: linear-gradient(90deg, #ffd700, #ff6b35);
-    border-radius: 20px;
-    width: 0%;
-    transition: width 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.module-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-.module-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-left: 5px solid #f4a261;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.module-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.module-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: white;
-}
-
-.module-card h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-.module-card p {
-    color: #666;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-}
-
-.duration {
-    color: #888;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-.content-area {
-    display: none; /* This will be overridden by .active on module pages */
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
-}
-
-.content-area.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.content-header {
-    border-bottom: 3px solid #f4a261;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
-}
-
-.content-header h2 {
-    color: #333;
-    font-size: 1.8rem;
-}
-
-.quiz-container {
-    background: #f8f9fa;
-    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;    /* Keep horizontal centering */
+    min-height: 100vh;
     padding: 20px;
-    margin-top: 20px;
+    margin: 0;
 }
 
-.quiz-question {
-    margin-bottom: 15px;
-}
-
-.quiz-question h4 {
-    color: #333;
-    margin-bottom: 5px;
-}
-        
-.quiz-instruction {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.quiz-options {
-    display: grid;
-    gap: 10px;
-}
-
-.quiz-option {
-    padding: 10px 15px;
-    background: white;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.quiz-option:hover {
-    border-color: #f4a261;
-    background: #f8f9fa;
-}
-
-.quiz-option.correct {
-    border-color: #28a745 !important;
-    background: #d4edda !important;
-    font-weight: bold;
-    cursor: default;
-}
-
-.quiz-option.incorrect {
-    border-color: #dc3545 !important;
-    background: #f8d7da !important;
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
-}
-
-.btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 5px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #f4a261, #e76f51);
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(244, 162, 97, 0.4);
-}
-
-.btn-success {
-    background: linear-gradient(135deg, #28a745, #20c997);
-    color: white;
-}
-
-.btn-warning {
-    background: linear-gradient(135deg, #ffc107, #fd7e14);
-    color: #333;
-}
-
-.navigation {
+/* Update the slide height to be more flexible */
+.slide {
+    min-height: 40vh; /* Reduced from 55vh */
+    max-height: 80vh; /* Add max height to prevent overflow */
+    flex: 0 0 100%;
+    padding: 20px 30px; /* Reduced padding */
     display: flex;
-    justify-content: space-between;
+    gap: 20px; /* Reduced gap */
     align-items: center;
-    margin-top: 30px;
+    overflow-y: auto; /* Allow scrolling if content is too tall */
 }
 
-.step-list {
-    counter-reset: step-counter;
-    list-style: none;
-    padding-left: 20px;
-    margin-top: 15px;
-}
-
-.step-list li {
-    counter-increment: step-counter;
-    margin-bottom: 15px;
-    padding: 15px 15px 15px 30px;
-    background: white;
-    border-radius: 8px;
-    border-left: 4px solid #f4a261;
-    position: relative;
-}
-
-.step-list li::before {
-    content: counter(step-counter);
-    position: absolute;
-    left: -18px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #f4a261;
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.icons {
-    display: flex;
-    gap: 15px;
-    margin: 15px 0;
-    flex-wrap: wrap;
-}
-
-.icon-item {
-    text-align: center;
-    flex: 1;
-    min-width: 150px;
-    padding: 15px;
-    background: white;
-    border-radius: 10px;
-    border: 2px solid #e9ecef;
-    transition: all 0.3s ease;
-}
-        
-.icon-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-color: #f4a261;
-}
-
-.icon-item .icon {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    color: #f4a261;
-}
-        
-.icon-item strong {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-}
-/* --- END ORIGINAL STYLES --- */
-
-
-/* --- NEW INTERACTIVE SLIDESHOW STYLES --- */
+/* Make sure slideshow container fits better */
 .slideshow-container {
     position: relative;
     background: #ffffff;
@@ -347,253 +34,31 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border: 1px solid #e9ecef;
     margin-top: 20px;
+    max-height: 85vh; /* Prevent container from being too tall */
 }
 
-.slides-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+/* Better responsive behavior for smaller screens */
+@media (max-height: 700px) {
+    .slide {
+        min-height: 50vh;
+        padding: 15px 20px;
+    }
+    
+    .slide-content h3 {
+        font-size: 1.6rem; /* Smaller heading on short screens */
+    }
 }
 
-.slide {
-    min-height: 55vh; /* Use viewport height instead of fixed pixels */
-    flex: 0 0 100%;
-    padding: 30px 40px;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.slide-content {
-    flex: 1;
-}
-
-.slide-content h3 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.slide-content p, .slide-content li {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.slide-content ul {
-    list-style-position: inside;
-    padding-left: 0;
-}
-        
-.slide-content .step-list {
-    margin-left: -20px; /* Adjust for better alignment */
-}
-
-.slide-image {
-    flex: 1;
-    max-width: 45%;
-    text-align: center;
-}
-
-.slide-image img {
-    max-width: 100%;
-    max-height: 400px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-/* For slides with columns */
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-.info-box {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 3px solid #f4a261;
-}
-.info-box h4 {
-    margin-bottom: 10px;
-    color: #333;
-}
-.info-box p {
-    font-size: 1rem;
-}
-
-.slide-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: background 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.slide-nav:hover {
-    background: #f4a261;
-}
-.slide-nav.prev {
-    left: 15px;
-}
-.slide-nav.next {
-    right: 15px;
-}
-.slide-nav:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.slide-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #ccc;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-.dot.active {
-    background: #f4a261;
-}
-/* --- END SLIDESHOW STYLES --- */
-
-/* Responsive Media Queries */
 @media (max-width: 768px) {
-    .module-grid {
-        grid-template-columns: 1fr;
-    }
-            
-    .header h1 {
-        font-size: 2rem;
-    }
-            
-    .navigation {
-        flex-direction: column;
-        gap: 15px;
-    }
-
     .slide {
         flex-direction: column;
         text-align: center;
+        min-height: auto; /* Let content determine height on mobile */
+        max-height: none;
     }
+    
     .slide-image {
         max-width: 80%;
-        margin-top: 20px;
-    }
-    .info-grid {
-        grid-template-columns: 1fr;
+        margin-top: 15px;
     }
 }
-/* --- NEW STYLES FOR DARK THEME MODULES --- */
-.dark-theme .slide {
-    background: #1c1c1c; /* Dark background */
-    color: #f0f0f0; /* Light text */
-}
-
-.dark-theme .slide-content h3 {
-    color: #e0c56e; /* Gold color for headings */
-    font-family: serif; /* Use a more elegant font */
-}
-
-.dark-theme .slide-content p, 
-.dark-theme .slide-content li,
-.dark-theme .info-box h4 {
-    color: #e0e0e0; /* Off-white for better readability */
-}
-
-.dark-theme .info-box {
-    background: #2a2a2a; /* Slightly lighter dark for info boxes */
-    border-left-color: #e0c56e; /* Gold accent border */
-}
-
-.dark-theme .icon-item {
-    background-color: #2a2a2a;
-    border-color: #444;
-}
-
-.dark-theme .icon-item strong,
-.dark-theme .icon-item .icon {
-    color: #e0c56e;
-}
-/* --- FIX FOR STEP LIST ON DARK THEME --- */
-.dark-theme .step-list li {
-    background: #2a2a2a; /* Use the slightly lighter dark color */
-    color: #e0e0e0;      /* Use the light text color */
-    border-left-color: #e0c56e; /* Use the gold accent color */
-}
-
-/* Also, let's fix the quiz options for the dark theme */
-.dark-theme .quiz-option {
-    background: #2a2a2a;
-    border-color: #444;
-    color: #e0e0e0;
-}
-
-.dark-theme .quiz-option:hover {
-    border-color: #e0c56e;
-    background: #333;
-}
-/* --- END DARK THEME STYLES --- */
-
-/* --- NEW LIGHT GREEN THEME FOR MODULE 5 --- */
-.light-green-theme .slide {
-    background: #f0f7f2; /* A very light, minty green background */
-    color: #333;
-}
-
-.light-green-theme .slide-content h3 {
-    color: #006400; /* Dark Green for headings */
-    font-family: 'Arial', sans-serif; /* A cleaner, modern font */
-}
-
-.light-green-theme .slide-content p, 
-.light-green-theme .slide-content li,
-.light-green-theme .info-box h4 {
-    color: #2f4f4f; /* Dark Slate Gray for text - easier to read */
-}
-
-.light-green-theme .info-box {
-    background: #e6f0e9; /* A slightly darker green for info boxes */
-    border-left-color: #2e8b57; /* Sea Green for the accent border */
-}
-
-.light-green-theme .icon-item {
-    background-color: #e6f0e9;
-    border-color: #d1e0d5;
-}
-
-.light-green-theme .icon-item strong {
-    color: #006400;
-}
-
-.light-green-theme .icon-item .icon {
-    color: #2e8b57;
-}
-
-.light-green-theme .slide-dots .dot.active {
-    background: #2e8b57; /* Match the accent color for active dots */
-}
-
-.light-green-theme .slide-nav:hover {
-    background: #2e8b57; /* Match the accent color for nav buttons */
-}
-/* --- END LIGHT GREEN THEME --- */
