@@ -533,6 +533,24 @@ body {
 .dark-theme .icon-item .icon {
     color: #e0c56e;
 }
+/* --- FIX FOR STEP LIST ON DARK THEME --- */
+.dark-theme .step-list li {
+    background: #2a2a2a; /* Use the slightly lighter dark color */
+    color: #e0e0e0;      /* Use the light text color */
+    border-left-color: #e0c56e; /* Use the gold accent color */
+}
+
+/* Also, let's fix the quiz options for the dark theme */
+.dark-theme .quiz-option {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+.dark-theme .quiz-option:hover {
+    border-color: #e0c56e;
+    background: #333;
+}
 /* --- END DARK THEME STYLES --- */
 
 /* --- NEW LIGHT GREEN THEME FOR MODULE 5 --- */
