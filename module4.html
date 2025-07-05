@@ -58,7 +58,7 @@
                     <!-- Slide 4: CCTV Surveillance -->
                     <div class="slide">
                         <div class="slide-image">
-                           <img src="/Induction/images/survelliance.png" alt="A decorative gold and black security camera">
+                           <img src="/Induction/images/surveillance.png" alt="A decorative gold and black security camera">
                         </div>
                         <div class="slide-content">
                             <h3>CCTV Surveillance</h3>
@@ -150,7 +150,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 
                 <button class="slide-nav prev" disabled>❮</button>
@@ -158,12 +157,10 @@
                 <div class="slide-dots"></div>
             </div>
         
- <!-- NEW NAVIGATION -->
-<div class="navigation">
-    <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
-    <!-- This button now calls a JS function when clicked -->
-    <button id="complete-module-btn" class="btn btn-success" onclick="markModuleAsComplete(4)" disabled>Next Module</button>
-</div>
+            <div class="navigation">
+                <a href="/Induction/index.html" class="btn btn-warning">← Back to Modules</a>
+                <button id="complete-module-btn" class="btn btn-success" onclick="markModuleAsComplete(4)" disabled>Next Module</button>
+            </div>
         </div>
     </div>
 
@@ -203,39 +200,41 @@
             goToSlide(0);
             container.dataset.initialized = 'true';
         }
-// REPLACE the old selectOption function with these TWO new ones
 
-function selectOption(optionEl, isCorrect) {
-    const quizQuestionEl = optionEl.closest('.quiz-question');
-    const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
-    if (correctOption) return;
+        function selectOption(optionEl, isCorrect) {
+            const quizQuestionEl = optionEl.closest('.quiz-question');
+            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+            if (correctOption) return;
 
-    if (isCorrect) {
-        optionEl.classList.add('correct');
-        const nextButton = document.getElementById('complete-module-btn');
-        // The button is now enabled, not the link
-        nextButton.disabled = false;
-        nextButton.style.background = ''; 
-    } else {
-        optionEl.classList.add('incorrect');
-    }
-}
+            if (isCorrect) {
+                optionEl.classList.add('correct');
+                const nextButton = document.getElementById('complete-module-btn');
+                nextButton.disabled = false;
+                nextButton.style.background = ''; 
+            } else {
+                optionEl.classList.add('incorrect');
+            }
+        }
 
-function markModuleAsComplete(moduleId) {
-    // Get existing completed modules from storage, or create a new empty array
-    let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
-    
-    // Add the current module to the list if it's not already there
-    if (!completed.includes(moduleId)) {
-        completed.push(moduleId);
-    }
-    
-    // Save the updated list back to storage
-    localStorage.setItem('completedModules', JSON.stringify(completed));
-    
-    // Navigate back to the main menu
-    window.location.href = '/Induction/index.html';
-}
+        function markModuleAsComplete(moduleId) {
+            let completed = JSON.parse(localStorage.getItem('completedModules')) || [];
+            
+            if (!completed.includes(moduleId)) {
+                completed.push(moduleId);
+            }
+            
+            localStorage.setItem('completedModules', JSON.stringify(completed));
+            
+            const totalModules = 7; 
+
+            if (moduleId < totalModules) {
+                const nextModuleId = moduleId + 1;
+                window.location.href = `/Induction/module${nextModuleId}.html`;
+            } else {
+                window.location.href = '/Induction/index.html';
+            }
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             setupSlideshow(4);
         });
