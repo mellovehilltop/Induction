@@ -3,148 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Complete - Hilltop Honey</title>
+    <title>Final Step - Sign Agreement - Hilltop Honey</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
+            margin: 0;
             padding: 20px;
-            text-align: center;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #ff7f50 0%, #ffa500 100%);
+            min-height: 100vh;
         }
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
         }
-        .success-icon {
-            color: #28a745;
-            font-size: 48px;
-            margin-bottom: 20px;
+        .header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
         }
-        .qr-code {
-            margin: 20px 0;
-            padding: 20px;
-            border: 2px dashed #007bff;
-            border-radius: 10px;
-            background-color: #f8f9ff;
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
         }
         .instructions {
-            background-color: #e7f3ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: left;
+            background: #e7f3ff;
+            padding: 25px;
+            margin: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
         }
-        .loading {
-            color: #666;
-            font-style: italic;
+        .instructions h2 {
+            color: #007bff;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .button {
-            background-color: #007bff;
+        .step-list {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .step-list li {
+            margin: 10px 0;
+            padding: 8px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            font-weight: bold;
+        }
+        .form-container {
+            margin: 20px;
+            border: 3px solid #007bff;
+            border-radius: 10px;
+            background: #f8f9ff;
+            position: relative;
+            min-height: 600px;
+        }
+        .form-header {
+            background: #007bff;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-            text-decoration: none;
-            display: inline-block;
+            padding: 15px 20px;
+            margin: 0;
+            border-radius: 7px 7px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .button:hover {
-            background-color: #0056b3;
+        .completion-tracker {
+            background: white;
+            color: #007bff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            display: block;
+        }
+        .help-section {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        .help-section h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffc107;
+            color: #856404;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .header {
+                padding: 20px 15px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .instructions, .warning, .form-container, .help-section {
+                margin: 10px;
+            }
+            iframe {
+                height: 500px;
+            }
+            .status-indicator {
+                position: static;
+                margin: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="status-indicator" id="statusIndicator">
+        ⚠️ Training Incomplete - Agreement Required
+    </div>
+
     <div class="container">
-        <div class="success-icon">✅</div>
-        <h1>Training Complete!</h1>
-        <p><strong>Well done!</strong> You've successfully completed your Hilltop Honey induction training.</p>
-        
+        <div class="header">
+            <div class="logo">🍯 HILLTOP HONEY</div>
+            <h1>Training Complete - Final Step Required</h1>
+            <p>Well done on completing your training modules and quiz!</p>
+        </div>
+
         <div class="instructions">
-            <h3>Final Step - Sign Your Agreement</h3>
-            <p><strong>What to do next:</strong></p>
-            <ol>
-                <li>Scan the QR code below with your phone camera</li>
-                <li>Or click the direct link if on a computer</li>
-                <li>Sign the agreement document</li>
-                <li>Your completed agreement will be sent to HR automatically</li>
-            </ol>
-        </div>
-
-        <div class="qr-code">
-            <div id="qr-container">
-                <div class="loading">Generating your signature link...</div>
-            </div>
-            <div id="link-container" style="margin-top: 15px;">
-                <a id="direct-link" href="#" class="button" style="display: none;">Open Agreement to Sign</a>
+            <h2>📋 Final Step - Sign Your Agreement</h2>
+            <div class="step-list">
+                <p><strong>To complete your induction, you must:</strong></p>
+                <ol>
+                    <li><strong>Read</strong> the agreement below carefully</li>
+                    <li><strong>Fill in</strong> your name and details</li>
+                    <li><strong>Sign</strong> electronically in the signature box</li>
+                    <li><strong>Submit</strong> - this will email a copy to HR automatically</li>
+                </ol>
+                <p><strong>Important:</strong> You cannot start work until this agreement is signed and received by HR.</p>
             </div>
         </div>
 
-        <div style="margin-top: 30px;">
-            <button onclick="emailLink()" class="button">Email Link to Myself</button>
+        <div class="warning">
+            ⚠️ Your training is not complete until you sign the agreement below. Your manager will check this has been done before your first shift.
         </div>
 
-        <p style="margin-top: 30px; color: #666; font-size: 14px;">
-            Need help? Contact HR or your line manager.
-        </p>
+        <div class="form-container">
+            <div class="form-header">
+                <h3>Food Handler Safety Agreement</h3>
+                <div class="completion-tracker">Step 2 of 2</div>
+            </div>
+            
+            <iframe 
+                src="https://eu1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhBpcWLgB9f6Ch_YGhallJB3WU_kag3w4cfHT2WeUWg_OSptvu4FrRHd4tbdzeOnuiw*&hosted=false"
+                title="Food Handler Safety Agreement - Electronic Signature Required"
+                id="adobeForm">
+            </iframe>
+        </div>
+
+        <div class="help-section">
+            <h3>Need Help?</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>Technical Issues</h4>
+                    <p>If the form won't load or you can't sign:</p>
+                    <ul>
+                        <li>Try refreshing the page</li>
+                        <li>Check your internet connection</li>
+                        <li>Try a different browser</li>
+                    </ul>
+                </div>
+                <div class="contact-item">
+                    <h4>Questions About the Agreement</h4>
+                    <p>Contact your line manager or HR:</p>
+                    <ul>
+                        <li>📞 HR Ext: [Your HR Extension]</li>
+                        <li>📧 hr@hilltophoney.co.uk</li>
+                        <li>🏢 HR Office - Ground Floor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Get URL parameters
-        function getUrlParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                name: params.get('name') || 'Trainee',
-                documentUrl: params.get('docUrl') || '',
-                email: params.get('email') || ''
-            };
+        // Check if user is returning from Microsoft Forms
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromQuiz = urlParams.get('from') === 'quiz';
+        const userName = urlParams.get('name') || '';
+        
+        if (fromQuiz) {
+            // Update page for someone coming from the quiz
+            document.querySelector('.header h1').textContent = `Well Done${userName ? ', ' + userName : ''}! One Final Step...`;
         }
 
-        // Generate QR code
-        function generateQRCode(url) {
-            if (!url) {
-                document.getElementById('qr-container').innerHTML = 
-                    '<p style="color: red;">Error: No document link provided</p>';
-                return;
+        // Monitor form submission (this is a basic example)
+        let formSubmitted = false;
+        
+        // Listen for form events if possible
+        window.addEventListener('message', function(event) {
+            // Adobe forms may send completion messages
+            if (event.data && event.data.type === 'form_completed') {
+                formSubmitted = true;
+                updateStatus('completed');
             }
+        });
 
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
-            
-            document.getElementById('qr-container').innerHTML = 
-                `<img src="${qrUrl}" alt="QR Code to sign agreement" style="max-width: 200px;">`;
-            
-            // Show direct link
-            const linkEl = document.getElementById('direct-link');
-            linkEl.href = url;
-            linkEl.style.display = 'inline-block';
-        }
-
-        // Email link function
-        function emailLink() {
-            const params = getUrlParams();
-            if (params.email && params.documentUrl) {
-                const subject = 'Your Hilltop Honey Induction Agreement';
-                const body = `Hi ${params.name},\n\nPlease click this link to sign your induction agreement:\n\n${params.documentUrl}\n\nThank you!`;
-                window.open(`mailto:${params.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-            } else {
-                alert('Email not available. Please use the QR code or direct link above.');
+        function updateStatus(status) {
+            const indicator = document.getElementById('statusIndicator');
+            if (status === 'completed') {
+                indicator.innerHTML = '✅ Training Complete - Agreement Signed';
+                indicator.style.background = '#d4edda';
+                indicator.style.color = '#155724';
+                
+                // Could redirect back to a success page
+                setTimeout(() => {
+                    if (confirm('Training complete! Would you like to return to the training portal?')) {
+                        // Redirect to wherever they should go next
+                        window.location.href = '/training-portal';
+                    }
+                }, 2000);
             }
         }
 
-        // Initialize page
-        window.onload = function() {
-            const params = getUrlParams();
-            generateQRCode(params.documentUrl);
-            
-            // Update name if provided
-            if (params.name && params.name !== 'Trainee') {
-                document.querySelector('h1').textContent = `Training Complete, ${params.name}!`;
+        // Prevent page refresh warnings
+        let isSubmitting = false;
+        
+        window.addEventListener('beforeunload', function(e) {
+            if (!formSubmitted && !isSubmitting) {
+                const message = 'You haven\'t signed the agreement yet. Your training won\'t be complete if you leave now.';
+                e.returnValue = message;
+                return message;
             }
-        };
+        });
+
+        // Focus on form when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('adobeForm').focus();
+            }, 1000);
+        });
     </script>
 </body>
 </html>
