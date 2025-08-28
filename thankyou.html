@@ -190,7 +190,8 @@
         </div>
 
         <div class="warning">
-            ⚠️ Your training is not complete until you sign the agreement below. After signing and confirming with your email, wait 10 seconds then <button onclick="checkCompletion()" style="background: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">Click Here to Confirm Completion</button>
+            ⚠️ Your training is not complete until you sign the agreement below. After signing and confirming with your email, click the button below to finish:<br><br>
+            <button onclick="checkCompletion()" style="background: #28a745; color: white; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">✅ Click Here to Confirm Completion</button>
         </div>
 
         <div class="form-container">
@@ -290,11 +291,10 @@
                 indicator.style.background = '#d4edda';
                 indicator.style.color = '#155724';
                 
-                // Could redirect back to a success page
+                // Redirect back to training start
                 setTimeout(() => {
                     if (confirm('Training complete! Would you like to return to the training portal?')) {
-                        // Redirect to wherever they should go next
-                        window.location.href = '/training-portal';
+                        window.location.href = 'https://mellovehilltop.github.io/Induction/';
                     }
                 }, 2000);
             }
