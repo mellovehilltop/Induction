@@ -229,20 +229,24 @@
 
 function selectOption(optionEl, isCorrect) {
     const quizQuestionEl = optionEl.closest('.quiz-question');
+    const allOptions = quizQuestionEl.querySelectorAll('.quiz-option');
+    
+    // Stop if already answered
     const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
     if (correctOption) return;
-
+    
+    // Mark the answer
     if (isCorrect) {
         optionEl.classList.add('correct');
-        const nextButton = document.getElementById('complete-module-btn');
-        // The button is now enabled, not the link
-        nextButton.disabled = false;
-        nextButton.style.background = ''; 
     } else {
         optionEl.classList.add('incorrect');
     }
+    
+    // Always enable the next button after any answer
+    const nextButton = document.getElementById('complete-module-btn');
+    nextButton.disabled = false;
+    nextButton.style.background = ''; 
 }
-
 function markModuleAsComplete(moduleId) {
     // Get existing completed modules from storage, or create a new empty array
     let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
