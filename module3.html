@@ -121,20 +121,26 @@
             container.dataset.initialized = 'true';
         }
 
-        function selectOption(optionEl, isCorrect) {
-            const quizQuestionEl = optionEl.closest('.quiz-question');
-            const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
-            if (correctOption) return;
-
-            if (isCorrect) {
-                optionEl.classList.add('correct');
-                const nextButton = document.getElementById('complete-module-btn');
-                nextButton.disabled = false;
-                nextButton.style.background = ''; 
-            } else {
-                optionEl.classList.add('incorrect');
-            }
-        }
+function selectOption(optionEl, isCorrect) {
+    const quizQuestionEl = optionEl.closest('.quiz-question');
+    const allOptions = quizQuestionEl.querySelectorAll('.quiz-option');
+    
+    // Stop if already answered
+    const correctOption = quizQuestionEl.querySelector('.quiz-option.correct');
+    if (correctOption) return;
+    
+    // Mark the answer
+    if (isCorrect) {
+        optionEl.classList.add('correct');
+    } else {
+        optionEl.classList.add('incorrect');
+    }
+    
+    // Always enable the next button after any answer
+    const nextButton = document.getElementById('complete-module-btn');
+    nextButton.disabled = false;
+    nextButton.style.background = ''; 
+}
 
         function markModuleAsComplete(moduleId) {
             let completed = JSON.parse(sessionStorage.getItem('completedModules')) || [];
